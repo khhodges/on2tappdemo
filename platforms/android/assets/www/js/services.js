@@ -1,4 +1,4 @@
-angular.module('jsonService', ['ngResource'])
-.factory('JsonService', function($resource) {
-  return $resource('bestsellers.json');
+﻿angular.module('jsonService', ['ngResource'])
+.factory('JsonService', function ($resource) {
+    return $resource('data/bestsellers.json');
 });

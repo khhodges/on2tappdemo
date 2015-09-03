@@ -1,8 +1,7 @@
-{
+﻿{
   "type": "Producs",
   "name": "on2t",
-  "products": 
-  [
+  "products": [
     {
       "name": "Gildan 50/50 Hoodie",
       "style": "18500",
@@ -99,7 +98,7 @@
       "id": "gildan-50-50-contrast-hood",
       "url": "https://api.scalablepress.com/v2/products/gildan-50-50-contrast-hood"
     }
-{
+    {
       "name": "Anvil LadiesLong Sleeve T",
       "style": "478",
       "image": {
@@ -165,7 +164,7 @@
       "id": "gildan-softstyle-ladies-junior-long-sleeve-t",
       "url": "https://api.scalablepress.com/v2/products/gildan-softstyle-ladies-junior-long-sleeve-t"
     }
- {
+    {
       "name": "Hanes Ladies Fleece Pants",
       "style": "W550",
       "image": {
@@ -195,7 +194,7 @@
       "id": "bella-straight-leg-sweatpants",
       "url": "https://api.scalablepress.com/v2/products/bella-straight-leg-sweatpants"
     }
-{
+    {
       "name": "Champion Ladies Dry T",
       "style": "CW23",
       "image": {
@@ -235,7 +234,7 @@
       "id": "gildan-ladies-performance-t-shirt",
       "url": "https://api.scalablepress.com/v2/products/gildan-ladies-performance-t-shirt"
     }
- {
+    {
       "name": "Gildan Ultra Ladies T-Shirt",
       "style": "2000L",
       "image": {
@@ -579,7 +578,7 @@
       "id": "next-level-ladies-sporty-v",
       "url": "https://api.scalablepress.com/v2/products/next-level-ladies-sporty-v"
     }
- {
+    {
       "name": "Gildan Ultra Ladies T-Shirt",
       "style": "2000L",
       "image": {
@@ -1025,7 +1024,7 @@
       "id": "bella-flowy-racerback-tank",
       "url": "https://api.scalablepress.com/v2/products/bella-flowy-racerback-tank"
     }
- {
+    {
       "name": "Gildan Long Sleeve T-Shirt",
       "style": "2400",
       "image": {
@@ -1185,7 +1184,7 @@
       "id": "comfort-colors-long-sleeve-pocket-t-shirt",
       "url": "https://api.scalablepress.com/v2/products/comfort-colors-long-sleeve-pocket-t-shirt"
     }
- {
+    {
       "name": "Beverage Mug",
       "style": "mug1",
       "image": {
@@ -1195,7 +1194,7 @@
       "id": "beverage-mug",
       "url": "https://api.scalablepress.com/v2/products/beverage-mug"
     }
-{
+    {
       "name": "Alo Performance T-Shirt",
       "style": "M1006",
       "image": {
@@ -1265,7 +1264,7 @@
       "id": "gildan-performance-t-shirt",
       "url": "https://api.scalablepress.com/v2/products/gildan-performance-t-shirt"
     }
-{
+    {
       "name": "iPhone 6 Case",
       "style": "ip6",
       "image": {
@@ -1335,7 +1334,7 @@
       "id": "samsung-galaxy-s5-case",
       "url": "https://api.scalablepress.com/v2/products/samsung-galaxy-s5-case"
     }
- {
+    {
       "name": "Bella Mini Pique Polo",
       "style": "B750",
       "image": {
@@ -1504,12 +1503,12 @@
       },
       "id": "gildan-50-50-pique-sport-shirt",
       "url": "https://api.scalablepress.com/v2/products/gildan-50-50-pique-sport-shirt"
-    }
- {
+    },
+    {
       "name": "Gloss Poster",
       "style": "poster-gloss",
       "image": {
-        "url": "https://oo-prod.s3.amazonaws.com/public/assets/1001-gloss-poster.png",
+        "url": "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0CAcQjRxqFQoTCMCL9fHy2scCFQaqgAodZh8FDA&url=http%3A%2F%2Fwww.topps.com%2Fandrew-mccutchen-series-2-poster-gold-ed-to-1.html&psig=AFQjCNHO85xDxe-15x93k9dyu11I2qoiWQ&ust=1441370817217497",
         "label": "Gloss Poster"
       },
       "id": "gloss-poster",
@@ -1534,8 +1533,8 @@
       },
       "id": "canvas-poster",
       "url": "https://api.scalablepress.com/v2/products/canvas-poster"
-    }
-{
+    },
+    {
       "name": "Champion Tagless Raglan Baseball T-Shirt",
       "style": "T1397",
       "image": {
@@ -1544,8 +1543,8 @@
       },
       "id": "champion-tagless-raglan-baseball-t-shirt",
       "url": "https://api.scalablepress.com/v2/products/champion-tagless-raglan-baseball-t-shirt"
-    }
- {
+    },
+    {
       "name": "Champion Gym Shorts",
       "style": "8187",
       "image": {
@@ -1565,7 +1564,7 @@
       "id": "bella-ladies-fitness-shorts",
       "url": "https://api.scalablepress.com/v2/products/bella-ladies-fitness-shorts"
     }
- {
+    {
       "name": "Gildan Ultra Cotton T-Shirt",
       "style": "2000",
       "image": {
@@ -2219,7 +2218,7 @@
       "id": "american-apparel-washed-t",
       "url": "https://api.scalablepress.com/v2/products/american-apparel-washed-t"
     }
-{
+    {
       "name": "Jerzees Sleeveless T-Shirt",
       "style": "49M",
       "image": {
@@ -2275,7 +2274,7 @@
       "id": "next-level-mens-jersey-tank",
       "url": "https://api.scalablepress.com/v2/products/next-level-mens-jersey-tank"
     }
-{
+    {
       "name": "Gildan 50/50 Sweatpants",
       "style": "18200",
       "image": {
@@ -2335,7 +2334,7 @@
       "id": "jerzees-open-bottom-sweatpants",
       "url": "https://api.scalablepress.com/v2/products/jerzees-open-bottom-sweatpants"
     }
- {
+    {
       "name": "Gildan Sweatshirt - Crew",
       "style": "18000",
       "image": {
@@ -2415,23 +2414,23 @@
       "id": "comfort-colors-fleece-crew",
       "url": "https://api.scalablepress.com/v2/products/comfort-colors-fleece-crew"
     }
-{
-  	 "type": "Garment",
-  	 "name": "Toddler Shirts",
-  	 "products": [],
-  	 "family": "Youth",
-  	 "url": "https://api.scalablepress.com/v2/categories/toddler-shirts",
-  	 "categoryId": "toddler-shirts"
-}
-{
- 	 "type": "Garment",
- 	 "name": "Underwear",
- 	 "products": [],
- 	 "family": "Unisex",
- 	 "url": "https://api.scalablepress.com/v2/categories/underwear",
- 	 "categoryId": "underwear"
-}
-{
+    {
+      "type": "Garment",
+      "name": "Toddler Shirts",
+      "products": [ ],
+      "family": "Youth",
+      "url": "https://api.scalablepress.com/v2/categories/toddler-shirts",
+      "categoryId": "toddler-shirts"
+    }
+    {
+      "type": "Garment",
+      "name": "Underwear",
+      "products": [ ],
+      "family": "Unisex",
+      "url": "https://api.scalablepress.com/v2/categories/underwear",
+      "categoryId": "underwear"
+    }
+    {
       "name": "Gildan Youth Hoodie",
       "style": "18500b",
       "image": {
@@ -2491,7 +2490,7 @@
       "id": "gildan-youth-open-bottom-sweatpants",
       "url": "https://api.scalablepress.com/v2/products/gildan-youth-open-bottom-sweatpants"
     }
- {
+    {
       "name": "Gildan Youth Cotton T",
       "style": "5000B",
       "image": {
@@ -2693,7 +2692,7 @@
       "id": "a4-youth-cooling-performance-crew",
       "url": "https://api.scalablepress.com/v2/products/a4-youth-cooling-performance-crew"
     }
- {
+    {
       "name": "Jerzees Zip Front Hoodie",
       "style": "993M",
       "image": {
@@ -2813,4 +2812,5 @@
       "id": "gildan-vintage-zip-hood",
       "url": "https://api.scalablepress.com/v2/products/gildan-vintage-zip-hood"
     }
- ]}
+  ]
+}

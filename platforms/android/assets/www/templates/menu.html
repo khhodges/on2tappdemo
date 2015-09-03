@@ -1,57 +1,62 @@
-<ion-side-menus>
-  <ion-pane ion-side-menu-content>
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
-        <ion class="icon ion-chevron"></ion>
-        Back</ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
-  </ion-pane>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
   <ion-side-menu side="left">
-    <header class="bar bar-header bar-stable">
-      <h1 class="title">Menu</h1>
-    </header>
-    <ion-content class="has-header">
-       <ion-list>
-        <a menu-close href="#/app/garments" class="item item-icon-left">
-          <i class="icon ion-android-options"></i> Select the Product
-        </a>
-        <a menu-close href="#/app/browse" class="item item-icon-left">
-          <i class="icon ion-android-camera"></i> Choose an Image
-        </a>
-        <a menu-close href="#/app/location" class="item item-icon-left">
-          <i class="icon ion-android-globe"></i> Pick a Location
-        </a>
-        <a menu-close href="#/app/custom" class="item item-icon-left">
-          <i class="icon ion-android-hangout"></i> Customize the Message
-        </a>
-        <a menu-close href="#/app/search" class="item item-icon-left">
-          <i class="icon ion-android-contacts"></i> Pick the Recipient
-        </a>
-        <a menu-close href="#/app/review" class="item item-icon-left">
-          <i class="icon ion-android-checkbox"></i> Review the Package
-        </a>
-        <a menu-close href="#/app/order" class="item item-icon-left">
-          <i class="icon ion-android-cart"></i> Place the Order
-        </a>
-        <a menu-close href="#/app/track" class="item item-icon-left">
-          <i class="icon ion-android-boat"></i> Track Progress
-        </a>
-        <a menu-close href="#/app/history" class="item item-icon-left">
-          <i class="icon ion-android-bookmark"></i> Look up History
-        </a>
-        <icon-item menu-close ng-click="login()" class="item item-icon-left">
-          <i class="icon ion-settings"></i> Account Control
-        </icon-item>
-        <a menu-close href="#/app/shirts" class="item item-icon-left">
-          <i class="icon ion-android-favorite"></i> Modify Favorites
-        </a>
-        <a menu-close href="#/app/feedback" class="item item-icon-left">
-          <i class="icon ion-android-attach"></i> Attach Feedback
-        </a>
-        <a menu-close href="#/app/about" class="item item-icon-left">
-          <i class="icon ion-home"></i> About Us
-        </a>
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Left</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+          <a menu-close href="#/app/garments" class="item item-icon-left">
+              <i class="icon ion-android-options"></i> Select the Product
+          </a>
+          <a menu-close href="#/app/browse" class="item item-icon-left">
+              <i class="icon ion-android-camera"></i> Choose an Image
+          </a>
+          <a menu-close href="#/app/location" class="item item-icon-left">
+              <i class="icon ion-android-globe"></i> Find Your Location
+          </a>
+          <a menu-close href="#/app/custom" class="item item-icon-left">
+              <i class="icon ion-android-hangout"></i> Customize the Message
+          </a>
+          <a menu-close href="#/app/search" class="item item-icon-left">
+              <i class="icon ion-android-contacts"></i> Pick the Recipient
+          </a>
+          <a menu-close href="#/app/review" class="item item-icon-left">
+              <i class="icon ion-android-checkbox"></i> Review the Package
+          </a>
+          <a menu-close href="#/app/order" class="item item-icon-left">
+              <i class="icon ion-android-cart"></i> Place the Order
+          </a>
+          <a menu-close href="#/app/track" class="item item-icon-left">
+              <i class="icon ion-android-boat"></i> Track Progress
+          </a>
+          <a menu-close href="#/app/history" class="item item-icon-left">
+              <i class="icon ion-android-bookmark"></i> Look up History
+          </a>
+          <icon-item menu-close ng-click="login()" class="item item-icon-left">
+              <i class="icon ion-settings"></i> Account Control
+          </icon-item>
+          <a menu-close href="#/app/shirts" class="item item-icon-left">
+              <i class="icon ion-android-favorite"></i> Modify Favorites
+          </a>
+          <a menu-close href="#/app/feedback" class="item item-icon-left">
+              <i class="icon ion-android-attach"></i> Attach Feedback
+          </a>
+          <a menu-close href="http://www.on2t.matadormultimedia.net/about-2/" class="item item-icon-left">
+              <i class="icon ion-home"></i> About Us
+          </a>
       </ion-list>
     </ion-content>
   </ion-side-menu>
