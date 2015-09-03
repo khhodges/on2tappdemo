@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget 
+    	xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        versionCode = "10" 
+        version     = "1.0.0"
+	id="com.ionicframework.demo374629" 
+	version="0.0.1" 
+	xmlns="http://www.w3.org/ns/widgets" 
+	xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <!-- versionCode is optional and Android only -->
+
+  <name>on2t Demo</name>
+
+    <description>
+        An Demo SIPantic project.
+    </description>
+
+  <author email="hi@ionicframework" href="http://ionicframework.com/">
+      SIPantic Team
+    </author>
+
+</widget>
