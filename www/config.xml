@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-    <widget 
-    	xmlns   = "http://www.w3.org/ns/widgets"
-        versionCode = "10" 
-	id="com.ionicframework.demo374629" 
-	version="0.1.1" 
-    <!-- versionCode is optional and Android only -->
+<widget
+  xmlns   = "http://www.w3.org/ns/widgets"
+    versionCode = "10"
+	id="com.ionicframework.demo374629"
+	version="0.1.1" >
+  
+  <!-- versionCode is optional and Android only -->
 
   <name>on2t Demo</name>
 
-    <description>
-        An Demo SIPantic project.
-    </description>
+  <description>
+    An Demo SIPantic project.
+  </description>
 
   <author email="hi@ionicframework" href="http://ionicframework.com/">
-      SIPantic Team
-    </author>
-    <icon src="icon.png" />
+    SIPantic Team
+  </author>
+  <icon src="icon.png" />
 
 </widget>
