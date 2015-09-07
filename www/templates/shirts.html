@@ -3,33 +3,24 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-    <ul class="list" ng-app="shirtSelection">
+    <ul class="list">
 
       <li class="item item-toggle">
         {{sexSelection && "MALE..." || !sexSelection && "FEMALE..."}}
         <label class="toggle toggle-balanced">
           <input type="checkbox" ng-model="sexSelection">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
         </label>
       </li>
       <li class="item item-toggle">
         {{ageSelection && "ADULT..." || !ageSelection && "YOUTH..."}}
         <label class="toggle toggle-assertive">
           <input type="checkbox" ng-model="ageSelection">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
         </label>
       </li>
       <li class="item item-toggle">
         {{sizeSelection && "LARGE..." || !sizeSelection && "SMALL..."}}
         <label class="toggle toggle-energized">
           <input type="checkbox" ng-model="sizeSelection">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
         </label>
       </li>
     </ul>

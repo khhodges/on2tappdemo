@@ -17,5 +17,6 @@
     SIPantic Team
   </author>
   <icon src="icon.png" />
+  <content src="index.html"></content>
 
 </widget>

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngResource', 'jsonService'])
 
-.controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function ($scope,  $ionicModal, $timeout) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -40,11 +40,21 @@ angular.module('starter.controllers', ['ngResource', 'jsonService'])
         }, 1000);
     };
 })
-.controller('VeryBestCtrl', function ($scope, JsonService) {
+.controller('VeryBestCtrl', function ($scope,$rootScope, JsonService) {
     JsonService.get(function (data) {
         $scope.images = data.images;
+        $rootScope.images = data.images;
     })
 })
+    .controller('detailsCtrl', function ($scope, $rootScope, JsonService, $stateParams) {
+        var myId = 0;
+        myId = $stateParams.id -1;
+        var myImages = [];
+        myImages = $rootScope.images;
+        $scope.item = myImages[myId];
+        alert($scope.item.image.url);
+        })
+
 
     .controller('MapCtrl', function ($scope, $ionicLoading) {
         $scope.mapCreated = function (map) {

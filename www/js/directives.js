@@ -8,10 +8,12 @@
         },
         link: function ($scope, $element, $attr) {
             function initialize() {
+                //The following shows a 45° perspective view of Palazzo Ducale in Venice, Italy:
+                var myLatLng = { lat: 45.434046, lng: 12.340284 };
                 var mapOptions = {
-                    center: new google.maps.LatLng(43.07493, -89.381388),
-                    zoom: 16,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                    center: myLatLng,
+                    zoom: 19,
+                    mapTypeId: google.maps.MapTypeId.HYBRID
                 };
                 var map = new google.maps.Map($element[0], mapOptions);
 

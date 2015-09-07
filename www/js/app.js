@@ -69,7 +69,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
             }
         }
     })
-
+    .state('app.image', {
+        url: '/image/:id',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/ImageCard.html',
+                controller: 'VeryBestCtrl'
+            }
+        }
+    })
     .state('app.playlists', {
           url: '/playlists',
           views: {
@@ -88,7 +96,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
                 controller: 'PlaylistCtrl'
             }
         }
-    });
+    })
+    .state('app.master', {
+         url: "/master",
+         views: {
+             'menuContent': {
+                 templateUrl: 'templates/master.html',
+                 controller: 'masterCtrl'
+             }
+         }
+     })
+	.state('app.details', {
+	    url: "/details/:id",
+	    views:{
+	        'menuContent':{
+	            templateUrl: 'templates/details.html',
+	            controller: 'detailsCtrl'
+	        }
+	    }
+	})	    
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/browse');
+    $urlRouterProvider.otherwise('/app/playlists');
 });
