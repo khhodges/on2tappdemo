@@ -47,8 +47,9 @@ angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
     })
 })
  .controller('ContactsCtrl', function ($scope, $cordovaContacts) {
+     alert("Contacts" + $cordovaContacts);
      $scope.getContactsList = function () {
-         $cordovaContacts.find().then(function (results) {
+         $cordovaContacts.find({ filter: 'ken' }).then(function (results) {
              $scope.contacts = results;
              alert("results: " + JSON.stringify(results));
          }, function (error) {
