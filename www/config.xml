@@ -3,7 +3,7 @@
   xmlns   = "http://www.w3.org/ns/widgets"
     versionCode = "10"
 	id="com.ionicframework.demo374629"
-	version="0.1.1" >
+	version="0.1.2" >
   
   <!-- versionCode is optional and Android only -->
 
@@ -13,7 +13,7 @@
     An Demo SIPantic project.
   </description>
 
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
+  <author email="ken@sipantic.net" href="http://www.sipantic.com/">
     SIPantic Team
   </author>
   <icon src="icon.png" />
