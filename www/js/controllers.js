@@ -46,9 +46,9 @@ angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
         $rootScope.images = data.images;
     })
 })
- .controller("ContactsCtrl", function ($scope, $cordovaContacts) {
+ .controller('ContactsCtrl', function ($scope, $cordovaContacts) {
      $scope.getContactsList = function () {
-         $cordovaContacts.find({ filter: '' }).then(function (results) {
+         $cordovaContacts.find().then(function (results) {
              $scope.contacts = results;
              alert("results: " + JSON.stringify(results));
          }, function (error) {

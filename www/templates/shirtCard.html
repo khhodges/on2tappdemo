@@ -1,4 +1,4 @@
-﻿<ion-view view-title="Style: {{shirt.style}}">
+﻿<ion-view view-title="{{shirt.categoryIdentifier | uppercase}} {{shirt.properties.brand}} {{shirt.properties.style}} {{shirt.categoryIdentifier}}  {{shirt.style}}">
     <ion-content>
         <div class="card has-header" ng-controller='shirtCardCtrl' ng-click="openModal()">
             <div class="row responsive">
@@ -8,15 +8,15 @@
                 <div class="col"><img ng-src="{{shirt.colors[4].images[3].url}}" height="50" /></div>
             </div>
             <div class="item item-divider">
-                {{shirt.name}}
+                {{shirt.name}} in {{shirt.colors.length}} colors
             </div>
-            <div class="item item-text-wrap">
-                {{shirt.comment}}
-            </div>
+                <table border="1" cellpadding="2" cellspacing="2">                    
+                    <tr>
+                        <td  class="checkbox"  ng-repeat="item in shirt.colors" bgcolor="#{{item.hex}}"></td></tr></table>
             <div class="item item-text-wrap">
                 {{shirt.description}}
                 <div class="item item-divider">
-                    {{shirt.brand}}, {{shirt.categoryIdentifier}} - {{shirt.style}}, {{shirt.material}}
+                   {{shirt.comments}} {{shirt.properties.material}}
                 </div>
             </div>
         </div>
