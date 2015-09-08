@@ -18,5 +18,6 @@
   </author>
   <icon src="icon.png" />
   <content src="index.html"></content>
+  <gap:plugin name="org.apache.cordova.contacts" version="0.2.13" />
 
 </widget>
