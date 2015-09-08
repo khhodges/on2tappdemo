@@ -1,12 +1,51 @@
 ﻿angular.module('jsonService', ['ngResource'])
 
 .factory('JsonService', function ($resource) {
-    alert("GetShirts1");
-    var shirts = $resource('data/bestsellers.json');
-    return shirts;
+    //alert("GetShirts1");
+    return $resource('data/bestsellers.json');
 })
 
-.factory('itemService', function ($resource) {
-    alert("GetShirtsA");
-    return $resource('data/bestsellers.json');
-});
+.factory('ProductService', function ($resource) {
+    //alert("GetShirtsA");
+    var myProducts = [];
+    myProducts = $resource('data/productlist.json');
+    return myProducts;
+})
+
+.factory('ProductServicey', function ($resource) {
+    var myProducts = [];
+    return {
+        getShirts: function () {
+            myProducts = $resource('data/productlist.json');
+            return myProducts;
+            },
+        getShirt: function (styleId) {
+            for (i = 0; i < myProducts.Products.length; i++) {
+                if (myProducts.Products[i].style == styleId) {
+                    return myProducts.Products[i];
+                }
+            }
+            return null;
+        }
+    }
+})
+.factory('shirtService', function ($http) {
+    var shirts = [];
+    return {
+        getShirts: function () {
+            return $http.get("https://api.scalablepress.com/v2/products/hanes-50-50-hoodie").then(function (response) {
+                shirts = response;
+                return shirts;
+            });
+        },
+        getShirt: function (id) {
+            for (i = 0; i < shirts.length; i++) {
+                if (shirts[i].id == id) {
+                    return shirts[i];
+                }
+            }
+            return null;
+        }
+    }
+})
+;

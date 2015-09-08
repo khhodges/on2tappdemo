@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngResource', 'jsonService'])
+angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
 
 .controller('AppCtrl', function ($scope,  $ionicModal, $timeout) {
 
@@ -40,19 +40,57 @@ angular.module('starter.controllers', ['ngResource', 'jsonService'])
         }, 1000);
     };
 })
-.controller('VeryBestCtrl', function ($scope,$rootScope, JsonService) {
+.controller('VeryBestCtrl', function ($scope, $rootScope, JsonService) {
     JsonService.get(function (data) {
         $scope.images = data.images;
         $rootScope.images = data.images;
     })
 })
+ .controller("ContactsCtrl", function ($scope, $cordovaContacts) {
+     $scope.getContactsList = function () {
+         $cordovaContacts.find({ filter: '' }).then(function (results) {
+             $scope.contacts = results;
+             alert("results: " + JSON.stringify(results));
+         }, function (error) {
+             alert("error" + error);
+             console.log("Error: " + error);
+         });
+     }
+ })
+
+
+
+.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, shirtService) {
+    $scope.styleId = $stateParams.styleId;
+    if ($rootScope.products.length <1) alert("Oops! Please reload");
+    for (i = 0; i < $rootScope.products.length; i++) {
+        if ($rootScope.products[i].style == $scope.styleId) {
+            $rootScope.shirt = $rootScope.products[i];
+        }
+    }
+    var aShirt = $rootScope.shirt;
+    var garmentUrl = aShirt.url;
+    $http.get(garmentUrl, {
+        params: {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    })
+     .success(function (data) {
+         $scope.shirt = data;
+     })
+     .error(function (data) {
+         alert("ERROR");
+     });
+})
+
     .controller('detailsCtrl', function ($scope, $rootScope, JsonService, $stateParams) {
         var myId = 0;
         myId = $stateParams.id -1;
         var myImages = [];
         myImages = $rootScope.images;
         $scope.item = myImages[myId];
-        alert($scope.item.image.url);
+        //alert($scope.item.image.url);
         })
 
 
@@ -82,7 +120,11 @@ angular.module('starter.controllers', ['ngResource', 'jsonService'])
         };
     })
 
-    .controller('GarmentsCtrl', function ($scope, $http) {
+    .controller('GarmentsCtrl', function ($rootScope, $scope, $http, ProductService) {
+        ProductService.get(function (data) {
+            $rootScope.products = data.products;
+        })
+
         $http.get("https://api.scalablepress.com/v2/categories", {
             params: {
                 "key1": "value1",

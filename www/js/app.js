@@ -6,6 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives'])
 
+
+
 .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -108,13 +110,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
      })
 	.state('app.details', {
 	    url: "/details/:id",
-	    views:{
-	        'menuContent':{
+	    views: {
+	        'menuContent': {
 	            templateUrl: 'templates/details.html',
 	            controller: 'detailsCtrl'
 	        }
 	    }
-	})	    
+	})
+    	.state('app.shirtCard', {
+    	    url: "/shirtCard/:styleId",
+    	    views: {
+    	        'menuContent': {
+    	            templateUrl: 'templates/shirtCard.html',
+    	            controller: 'shirtCardCtrl'
+    	        }
+    	    }
+    	})
+    	.state('app.contacts', {
+    	    url: "/contacts",
+    	    views: {
+    	        'menuContent': {
+    	            templateUrl: 'templates/contacts.html',
+    	            controller: 'ContactsCtrl'
+    	        }
+    	    }
+    	})
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/playlists');
 });

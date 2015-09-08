@@ -1,0 +1,24 @@
+﻿<ion-view view-title="Style: {{shirt.style}}">
+    <ion-content>
+        <div class="card has-header" ng-controller='shirtCardCtrl' ng-click="openModal()">
+            <div class="row responsive">
+                <div class="col"><img ng-src="{{shirt.colors[1].images[0].url}}" height="50"/></div>
+                <div class="col"><img ng-src="{{shirt.colors[2].images[1].url}}" height="50" /></div>
+                <div class="col"><img ng-src="{{shirt.colors[3].images[2].url}}" height="50" /></div>
+                <div class="col"><img ng-src="{{shirt.colors[4].images[3].url}}" height="50" /></div>
+            </div>
+            <div class="item item-divider">
+                {{shirt.name}}
+            </div>
+            <div class="item item-text-wrap">
+                {{shirt.comment}}
+            </div>
+            <div class="item item-text-wrap">
+                {{shirt.description}}
+                <div class="item item-divider">
+                    {{shirt.brand}}, {{shirt.categoryIdentifier}} - {{shirt.style}}, {{shirt.material}}
+                </div>
+            </div>
+        </div>
+    </ion-content></ion-view>
+

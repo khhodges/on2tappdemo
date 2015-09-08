@@ -4,11 +4,12 @@
     </ion-nav-buttons>
     <ion-content class="has-header">
         <div class="list">
-            <a class="item item-thumbnail-left" href="#/app/search" data-ng-repeat="garment in catList">
+            <ion-item class="item item-thumbnail-left" href="#/app/shirtCard/{{garment.style}}" data-ng-repeat="garment in products">
                 <img ng-src="{{garment.image.url}}">
                 <h2>{{garment.name}}</h2>
-                <p>{{garment.family}}</p>
-            </a>
+                <p>{{garment.id}}</p>
+                <p>{{garment.style}}</p>
+            </ion-item>
         </div>
     </ion-content>
 </ion-view>
