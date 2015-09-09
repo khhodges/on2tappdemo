@@ -1,13 +1,12 @@
+<ion-view title="Shipping Address">
     <ion-pane >
       <ion-header-bar class="bar-stable">
         <button class="button" ng-click="getContactsList()">Load</button>
         <h1 class="title">Get Contacts</h1>
       </ion-header-bar>
-      <ion-content>
-        <ion-list>
-          <ion-item ng-repeat="contact in contacts">
-            {{contact.name.givenName}}
-          </ion-item>
-        </ion-list>
+        <ion-content class="flex-container">
+            <button id="pickContact">Pick Contact</button>
+            <div id="selectedContact"></div>
       </ion-content>
     </ion-pane>
+</ion-view>

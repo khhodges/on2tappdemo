@@ -47,23 +47,64 @@ angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
     })
 })
  .controller('ContactsCtrl', function ($scope, $cordovaContacts) {
-     alert("Contacts" + $cordovaContacts);
-     $scope.getContactsList = function () {
-         $cordovaContacts.find({ filter: 'ken' }).then(function (results) {
-             $scope.contacts = results;
-             alert("results: " + JSON.stringify(results));
-         }, function (error) {
-             alert("error" + error);
-             console.log("Error: " + error);
+    //alert("Contacts" + $cordovaContacts);
+    document.addEventListener("deviceready", init, false);
+    function init() {
+        document.querySelector("#pickContact").addEventListener("touchend", doContactPicker, false);
+    }
+    function doContactPicker() {
+        navigator.contacts.pickContact(function (contact) {
+            console.log('The following contact has been selected:' + JSON.stringify(contact));
+            //Build a simple string to display the Contact - would be better in Handlebars
+            var s = "<div class='flex-item:nth-child(1)'";
+            s += "<h2>" + getName(contact) + "</h2>";
+
+            if (contact.emails && contact.emails.length) {
+                s += "Email: " + contact.emails[0].value + "<br/>";
+            }
+
+            if (contact.phoneNumbers && contact.phoneNumbers.length) {
+                s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
+            }
+            if (contact.ContactAddress && contact.ContactAddress.length) {
+                s += "Address: " + contact.ContactAddress[0].value + "<br/>";
+            }
+            if (contact.photos && contact.photos.length) {
+                s += "<p><img src='" + contact.photos[0].value + "'></p>";
+            }
+            document.querySelector("#selectedContact").innerHTML = s;
+        }, function (err) {
+            console.log('Error: ' + err);
          });
      }
+    /*
+    Handles iOS not returning displayName or returning null/""
+    */
+    function getName(c) {
+        var name = c.displayName;
+        if (!name || name === "") {
+            if (c.name.formatted) return c.name.formatted;
+            if (c.name.givenName && c.name.familyName) return c.name.givenName + " " + c.name.familyName;
+            return "Nameless";
+        }
+        return name;
+    }
+//    $scope.getContactsList = function () {
+//        $cordovaContacts.find({ filter: 'ken' }).then(function (results) {
+//            $scope.contacts = results;
+//            //alert("results: " + JSON.stringify(results));
+//        }, function (error) {
+//            alert("error" + error);
+//            console.log("Error: " + error);
+//        });
+//    }
  })
 
 
 
 .controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, shirtService) {
     $scope.styleId = $stateParams.styleId;
-    if ($rootScope.products.length <1) alert("Oops! Please reload");
+    if ($rootScope.products.length === null) alert("Oops! Please reload");
     for (i = 0; i < $rootScope.products.length; i++) {
         if ($rootScope.products[i].style == $scope.styleId) {
             $rootScope.shirt = $rootScope.products[i];
@@ -155,12 +196,12 @@ angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
 
 .controller('PlaylistsCtrl', function ($scope) {
     $scope.playlists = [
-      { title: 'Reggae', id: 1 },
-      { title: 'Chill', id: 2 },
-      { title: 'Dubstep', id: 3 },
-      { title: 'Indie', id: 4 },
-      { title: 'Rap', id: 5 },
-      { title: 'Cowbell', id: 6 }
+    { title: 'Hoodies', id: 1 },
+    { title: 'Unisex', id: 2 },
+    { title: 'Youth', id: 3 },
+    { title: 'Female', id: 4 },
+    { title: 'Mail', id: 5 },
+    { title: 'Other', id: 6 }
     ];
 })
 
