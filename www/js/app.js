@@ -4,12 +4,16 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives'])
+angular.module('starter', ['ionic','ionic.service.core','ionic.service.analytics', 'starter.controllers', 'starter.directives'])
 
+.run(['$ionicAnalytics', function ($ionicAnalytics) {
+    $ionicAnalytics.register();
+}])
 
-
-.run(function ($ionicPlatform) {
+.run(function ($ionicPlatform, $ionicAnalytics) {
     $ionicPlatform.ready(function () {
+        $ionicAnalytics.register();
+        // 204072158929 Google Project number. 
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -156,5 +160,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
             }
         })
     	    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/error');
+    $urlRouterProvider.otherwise('/app/quotelist');
 });
