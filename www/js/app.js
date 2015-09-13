@@ -67,7 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
         views: {
             'menuContent': {
                 templateUrl: 'templates/browse.html',
-                controller: 'VeryBestCtrl'
+                controller: 'BestsellerCtrl'
             }
         }
     })
@@ -76,19 +76,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
         views: {
             'menuContent': {
                 templateUrl: 'templates/ImageCard.html',
-                controller: 'VeryBestCtrl'
+                controller: 'BestsellerCtrl'
             }
         }
     })
-    .state('app.playlists', {
-          url: '/playlists',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/playlists.html',
-                  controller: 'PlaylistsCtrl'
-              }
-          }
-      })
+    .state('app.quotelist', {
+        url: '/quotelist',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/quotelist.html',
+                controller: 'QuoteCtrl'
+            }
+        }
+    })
+
 
     .state('app.single', {
         url: '/playlists/:playlistId',
@@ -100,14 +101,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
         }
     })
     .state('app.master', {
-         url: "/master",
-         views: {
-             'menuContent': {
-                 templateUrl: 'templates/master.html',
-                 controller: 'masterCtrl'
-             }
-         }
-     })
+        url: "/master",
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/master.html',
+                controller: 'masterCtrl'
+            }
+        }
+    })
 	.state('app.details', {
 	    url: "/details/:id",
 	    views: {
@@ -135,6 +136,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
     	        }
     	    }
     	})
-    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/garments');
+    	.state('app.track', {
+    	    url: "/track",
+    	    views: {
+    	        'menuContent': {
+    	            templateUrl: 'templates/tracking.html',
+    	            controller: 'GarmentsCtrl'
+
+    	        }
+    	    }
+    	})
+        .state('app.error', {
+            url: "/error",
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/error.html',
+                    controller: 'ErrorCtrl'
+                }
+            }
+        })
+    	    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/app/error');
 });

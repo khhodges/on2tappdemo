@@ -11,6 +11,18 @@
     myProducts = $resource('data/productlist.json');
     return myProducts;
 })
+    .factory('QuoteService', function ($resource) {
+        //alert("GetShirtsA");
+        var myQuotations = [];
+        myQuotations = $resource('data/quotes.json');
+        return myQuotations;
+    })
+    .factory('CategoryService', function ($resource) {
+        //alert("GetShirtsA");
+        var myCategory = [];
+        myProducts = $resource('data/categories.json');
+        return myCategory;
+    })
 
 .factory('ProductServicey', function ($resource) {
     var myProducts = [];

@@ -3,8 +3,9 @@
   xmlns   = "http://www.w3.org/ns/widgets"
     versionCode = "10"
 	xmlns:gap   = "http://phonegap.com/ns/1.0"
-	id="com.ionicframework.demo374629"
+  id="com.ionicframework.demo374629"
 	version="0.1.2" >
+  
   
   <!-- versionCode is optional and Android only -->
 

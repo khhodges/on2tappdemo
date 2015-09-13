@@ -73,12 +73,6 @@
       "url": "https://api.scalablepress.com/v2/products/jerzees-super-sweats-hoodie"
     },
     {
-      "name": "Fruit of the Loom Best Hoodie",
-      "style": "16130",
-      "id": "fruit-of-the-loom-best-hoodie",
-      "url": "https://api.scalablepress.com/v2/products/fruit-of-the-loom-best-hoodie"
-    },
-    {
       "name": "Gildan DryBlend 50/50 Hood",
       "style": "G125",
       "image": {
@@ -137,12 +131,6 @@
       },
       "id": "bella-long-sleeve-v-neck",
       "url": "https://api.scalablepress.com/v2/products/bella-long-sleeve-v-neck"
-    },
-    {
-      "name": "Next Level 3/4 Sleeve Raglan",
-      "style": "6951",
-      "id": "next-level-3-4-sleeve-raglan",
-      "url": "https://api.scalablepress.com/v2/products/next-level-3-4-sleeve-raglan"
     },
     {
       "name": "Gildan Ladies Missy Long Sleeve T",
@@ -555,30 +543,6 @@
       "url": "https://api.scalablepress.com/v2/products/fruit-of-the-loom-ladies-hd-v-neck-t"
     },
     {
-      "name": "Next Level Jersey Tank",
-      "style": "3533",
-      "id": "next-level-jersey-tank",
-      "url": "https://api.scalablepress.com/v2/products/next-level-jersey-tank"
-    },
-    {
-      "name": "Next Level Triblend Dolman",
-      "style": "6760",
-      "id": "next-level-triblend-dolman",
-      "url": "https://api.scalablepress.com/v2/products/next-level-triblend-dolman"
-    },
-    {
-      "name": "Bella Missy Triblend T",
-      "style": "6406",
-      "id": "bella-missy-triblend-t",
-      "url": "https://api.scalablepress.com/v2/products/bella-missy-triblend-t"
-    },
-    {
-      "name": "Next Level Ladies Sporty V",
-      "style": "3400L",
-      "id": "next-level-ladies-sporty-v",
-      "url": "https://api.scalablepress.com/v2/products/next-level-ladies-sporty-v"
-    },
-    {
       "name": "Gildan Ultra Ladies T-Shirt",
       "style": "2000L",
       "image": {
@@ -917,12 +881,6 @@
       "url": "https://api.scalablepress.com/v2/products/bella-missy-triblend-t"
     },
     {
-      "name": "Next Level Ladies Sporty V",
-      "style": "3400L",
-      "id": "next-level-ladies-sporty-v",
-      "url": "https://api.scalablepress.com/v2/products/next-level-ladies-sporty-v"
-    },
-    {
       "name": "Anvil Ladies Tank Top",
       "style": "815",
       "image": {
@@ -1001,18 +959,6 @@
       },
       "id": "lat-v-neck-racerback",
       "url": "https://api.scalablepress.com/v2/products/lat-v-neck-racerback"
-    },
-    {
-      "name": "Next Level Burnout Racerback Tank",
-      "style": "N6533",
-      "id": "next-level-burnout-racerback-tank",
-      "url": "https://api.scalablepress.com/v2/products/next-level-burnout-racerback-tank"
-    },
-    {
-      "name": "Next Level Racerback Terry Tank",
-      "style": "6933",
-      "id": "next-level-racerback-terry-tank",
-      "url": "https://api.scalablepress.com/v2/products/next-level-racerback-terry-tank"
     },
     {
       "name": "Bella Flowy Racerback Tank",
@@ -1505,36 +1451,6 @@
       "url": "https://api.scalablepress.com/v2/products/gildan-50-50-pique-sport-shirt"
     },
     {
-      "name": "Gloss Poster",
-      "style": "poster-gloss",
-      "image": {
-        "url": "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0CAcQjRxqFQoTCMCL9fHy2scCFQaqgAodZh8FDA&url=http%3A%2F%2Fwww.topps.com%2Fandrew-mccutchen-series-2-poster-gold-ed-to-1.html&psig=AFQjCNHO85xDxe-15x93k9dyu11I2qoiWQ&ust=1441370817217497",
-        "label": "Gloss Poster"
-      },
-      "id": "gloss-poster",
-      "url": "https://api.scalablepress.com/v2/products/gloss-poster"
-    },
-    {
-      "name": "Matte Poster",
-      "style": "poster-matte",
-      "image": {
-        "url": "https://oo-prod.s3.amazonaws.com/public/assets/1001-matte-poster.png",
-        "label": "Matte Poster"
-      },
-      "id": "matte-poster",
-      "url": "https://api.scalablepress.com/v2/products/matte-poster"
-    },
-    {
-      "name": "Canvas Poster",
-      "style": "poster-canvas",
-      "image": {
-        "url": "https://oo-prod.s3.amazonaws.com/public/assets/1001-canvas-poster.png",
-        "label": "Canvas Poster"
-      },
-      "id": "canvas-poster",
-      "url": "https://api.scalablepress.com/v2/products/canvas-poster"
-    },
-    {
       "name": "Champion Tagless Raglan Baseball T-Shirt",
       "style": "T1397",
       "image": {
@@ -1965,12 +1881,6 @@
       "url": "https://api.scalablepress.com/v2/products/bella-ladies-2-x-1-rib-tank"
     },
     {
-      "name": "Next Level Boyfriend Tee",
-      "style": "3900",
-      "id": "next-level-boyfriend-tee",
-      "url": "https://api.scalablepress.com/v2/products/next-level-boyfriend-tee"
-    },
-    {
       "name": "Hanes Ringspun Nano-T",
       "style": "4980",
       "image": {
@@ -2069,12 +1979,6 @@
       },
       "id": "comfort-colors-ringspun-tank",
       "url": "https://api.scalablepress.com/v2/products/comfort-colors-ringspun-tank"
-    },
-    {
-      "name": "Anvil American T-Shirt",
-      "style": "US779",
-      "id": "anvil-american-t-shirt",
-      "url": "https://api.scalablepress.com/v2/products/anvil-american-t-shirt"
     },
     {
       "name": "Hanes Ladies Ringspun V Neck Nano T",
@@ -2206,18 +2110,7 @@
       "id": "comfort-colors-pocket-tee",
       "url": "https://api.scalablepress.com/v2/products/comfort-colors-pocket-tee"
     },
-    {
-      "name": "Next Level CVC Crew",
-      "style": "N6210",
-      "id": "next-level-cvc-crew",
-      "url": "https://api.scalablepress.com/v2/products/next-level-cvc-crew"
-    },
-    {
-      "name": "American Apparel Washed T",
-      "style": "2011",
-      "id": "american-apparel-washed-t",
-      "url": "https://api.scalablepress.com/v2/products/american-apparel-washed-t"
-    },
+
     {
       "name": "Jerzees Sleeveless T-Shirt",
       "style": "49M",
@@ -2267,12 +2160,6 @@
       },
       "id": "gildan-sleeveless-t-shirt",
       "url": "https://api.scalablepress.com/v2/products/gildan-sleeveless-t-shirt"
-    },
-    {
-      "name": "Next Level Mens Jersey Tank",
-      "style": "3633",
-      "id": "next-level-mens-jersey-tank",
-      "url": "https://api.scalablepress.com/v2/products/next-level-mens-jersey-tank"
     },
     {
       "name": "Gildan 50/50 Sweatpants",
@@ -2413,22 +2300,6 @@
       },
       "id": "comfort-colors-fleece-crew",
       "url": "https://api.scalablepress.com/v2/products/comfort-colors-fleece-crew"
-    },
-    {
-      "type": "Garment",
-      "name": "Toddler Shirts",
-      "products": [ ],
-      "family": "Youth",
-      "url": "https://api.scalablepress.com/v2/categories/toddler-shirts",
-      "categoryId": "toddler-shirts"
-    },
-    {
-      "type": "Garment",
-      "name": "Underwear",
-      "products": [ ],
-      "family": "Unisex",
-      "url": "https://api.scalablepress.com/v2/categories/underwear",
-      "categoryId": "underwear"
     },
     {
       "name": "Gildan Youth Hoodie",
@@ -2609,18 +2480,6 @@
       },
       "id": "jerzees-hi-densi-t-youth-t",
       "url": "https://api.scalablepress.com/v2/products/jerzees-hi-densi-t-youth-t"
-    },
-    {
-      "name": "Fruit of the Loom Youth 50/50 T",
-      "style": "5930B",
-      "id": "fruit-of-the-loom-youth-50-50-t",
-      "url": "https://api.scalablepress.com/v2/products/fruit-of-the-loom-youth-50-50-t"
-    },
-    {
-      "name": "Anvil Youth T-Shirt",
-      "style": "705B",
-      "id": "anvil-youth-t-shirt",
-      "url": "https://api.scalablepress.com/v2/products/anvil-youth-t-shirt"
     },
     {
       "name": "Tie Dye Youth T-Shirt",

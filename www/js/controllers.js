@@ -1,6 +1,6 @@
-angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
+angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova'])
 
-.controller('AppCtrl', function ($scope,  $ionicModal, $timeout) {
+.controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -40,18 +40,20 @@ angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
         }, 1000);
     };
 })
-.controller('VeryBestCtrl', function ($scope, $rootScope, JsonService) {
+.controller('BestsellerCtrl', function ($scope, $rootScope, JsonService) {
     JsonService.get(function (data) {
         $scope.images = data.images;
         $rootScope.images = data.images;
     })
 })
- .controller('ContactsCtrl', function ($scope, $cordovaContacts) {
+.controller('ContactsCtrl', function ($scope, $cordovaContacts) {
     //alert("Contacts" + $cordovaContacts);
     document.addEventListener("deviceready", init, false);
+
     function init() {
         document.querySelector("#pickContact").addEventListener("touchend", doContactPicker, false);
     }
+
     function doContactPicker() {
         navigator.contacts.pickContact(function (contact) {
             console.log('The following contact has been selected:' + JSON.stringify(contact));
@@ -66,17 +68,21 @@ angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
             if (contact.phoneNumbers && contact.phoneNumbers.length) {
                 s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
             }
+
             if (contact.ContactAddress && contact.ContactAddress.length) {
                 s += "Address: " + contact.ContactAddress[0].value + "<br/>";
             }
+
             if (contact.photos && contact.photos.length) {
                 s += "<p><img src='" + contact.photos[0].value + "'></p>";
             }
+
             document.querySelector("#selectedContact").innerHTML = s;
         }, function (err) {
             console.log('Error: ' + err);
-         });
-     }
+        });
+    }
+
     /*
     Handles iOS not returning displayName or returning null/""
     */
@@ -98,9 +104,7 @@ angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
 //            console.log("Error: " + error);
 //        });
 //    }
- })
-
-
+})
 
 .controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, shirtService) {
     $scope.styleId = $stateParams.styleId;
@@ -118,91 +122,113 @@ angular.module('starter.controllers', ['ngResource', 'jsonService','ngCordova'])
             "key2": "value2"
         }
     })
-     .success(function (data) {
-         $scope.shirt = data;
-     })
-     .error(function (data) {
-         alert("ERROR");
-     });
+    .success(function (data) {
+        $scope.shirt = data;
+    })
+    .error(function (data) {
+        alert("ERROR");
+    });
 })
 
-    .controller('detailsCtrl', function ($scope, $rootScope, JsonService, $stateParams) {
-        var myId = 0;
-        myId = $stateParams.id -1;
-        var myImages = [];
-        myImages = $rootScope.images;
-        $scope.item = myImages[myId];
-        //alert($scope.item.image.url);
-        })
+.controller('detailsCtrl', function ($scope, $rootScope, JsonService, $stateParams) {
+    var myId = 0;
+    myId = $stateParams.id - 1;
+    var myImages = [];
+    myImages = $rootScope.images;
+    $scope.item = myImages[myId];
+    //alert($scope.item.image.url);
+})
 
+.controller('MapCtrl', function ($scope, $ionicLoading) {
+    $scope.mapCreated = function (map) {
+        $scope.map = map;
+    };
 
-    .controller('MapCtrl', function ($scope, $ionicLoading) {
-        $scope.mapCreated = function (map) {
-            $scope.map = map;
-        };
+    $scope.centerOnMe = function () {
+        console.log("Centering");
+        if (!$scope.map) {
+            return;
+        }
 
-        $scope.centerOnMe = function () {
-            console.log("Centering");
-            if (!$scope.map) {
-                return;
-            }
+        $scope.loading = $ionicLoading.show({
+            content: 'Getting current location...',
+            showBackdrop: false
+        });
 
-            $scope.loading = $ionicLoading.show({
-                content: 'Getting current location...',
-                showBackdrop: false
-            });
+        navigator.geolocation.getCurrentPosition(function (pos) {
+            console.log('Got pos', pos);
+            $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            $scope.loading.hide();
+        }, function (error) {
+            alert('Unable to get location: ' + error.message);
+        });
+    };
+})
 
-            navigator.geolocation.getCurrentPosition(function (pos) {
-                console.log('Got pos', pos);
-                $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-                $scope.loading.hide();
-            }, function (error) {
-                alert('Unable to get location: ' + error.message);
-            });
-        };
+.controller('GarmentsCtrl', function ($rootScope, $scope, $http, ProductService, $stateParams) {
+    $scope.catagories = [
+        { title: 'Hoodies', id: 'Hoodies' },
+        { title: 'Unisex', id: 'Unisex' },
+        { title: 'Youth', id: 'Youth' },
+        { title: 'Female', id: 'Female' },
+        { title: 'Men', id: 'Men' },
+        { title: 'All', id: '' }
+    ];
+
+    $stateParams.filterId = 'Hoodies';
+    $scope.filterFunction = function (element) {
+        return element.name.match('/^Bella/') ? true : false;
+    };
+    ProductService.get(function (data) {
+        $rootScope.products = data.products;
     })
 
-    .controller('GarmentsCtrl', function ($rootScope, $scope, $http, ProductService) {
-        ProductService.get(function (data) {
-            $rootScope.products = data.products;
-        })
-
-        $http.get("https://api.scalablepress.com/v2/categories", {
-            params: {
-                "key1": "value1",
-                "key2": "value2"
-            }
-        })
-          .success(function (data) {
-              $scope.catList = data;
-          })
-          .error(function (data) {
-              alert("ERROR");
-          });
-
-        $http.get("https://api.scalablepress.com/v2/products/hanes-50-50-hoodie", {
-            params: {
-                "key1": "value1",
-                "key2": "value2"
-            }
-        })
-          .success(function (data) {
-              $scope.garmentsList = data;
-          })
-          .error(function (data) {
-              alert("ERROR2");
-          });
+    $http.get("https://api.scalablepress.com/v2/categories", {
+        params: {
+            "key1": "value1",
+            "key2": "value2"
+        }
     })
+    .success(function (data) {
+        $scope.catList = data;
+    })
+    .error(function (data) {
+        alert("ERROR");
+    });
+
+    $http.get("https://api.scalablepress.com/v2/products/hanes-50-50-hoodie", {
+        params: {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    })
+    .success(function (data) {
+        $scope.garmentsList = data;
+    })
+    .error(function (data) {
+        alert("ERROR2");
+    });
+})
 
 .controller('PlaylistsCtrl', function ($scope) {
     $scope.playlists = [
-    { title: 'Hoodies', id: 1 },
-    { title: 'Unisex', id: 2 },
-    { title: 'Youth', id: 3 },
-    { title: 'Female', id: 4 },
-    { title: 'Mail', id: 5 },
-    { title: 'Other', id: 6 }
+    { title: 'Hoodies', id: 'Hoodies' },
+    { title: 'Unisex', id: 'Unisex' },
+    { title: 'Youth', id: 'Youth' },
+    { title: 'Female', id: 'Female' },
+    { title: 'Men', id: 'Men' },
+    { title: 'All', id: '' }
     ];
+})
+
+.controller('QuoteCtrl', function ($scope, QuoteService) {
+    QuoteService.get(function (data) {
+        $scope.quotations = data.quotes;
+    })
+}
+)
+.controller('ErrorCtrl', function ($rootScope) {
+    
 })
 
 .controller('PlaylistCtrl', function ($scope, $stateParams) {
