@@ -18,6 +18,7 @@
   <author email="ken@sipantic.net" href="http://www.on2t.com/">
     SIPantic Team
   </author>
+  <preference name="AutoHideSplashScreen" value="false" />
   <icon src="icon.png" />
   <content src="index.html"></content>
   <gap:plugin name="org.apache.cordova.contacts"  />
