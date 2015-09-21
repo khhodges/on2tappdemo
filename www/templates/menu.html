@@ -3,7 +3,6 @@
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
-
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -18,6 +17,9 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
+          <a menu-close href="#/app/design" class="item item-icon-left">
+              <i class="icon ion-android-attach"></i> Design Options
+          </a>
           <a menu-close href="#/app/garments" class="item item-icon-left">
               <i class="icon ion-android-options"></i> Select a Product
           </a>
@@ -33,28 +35,7 @@
           <a menu-close href="#/app/contacts" class="item item-icon-left">
               <i class="icon ion-android-contacts"></i> Choose a Friend
           </a>
-          <a menu-close href="#/app/review" class="item item-icon-left">
-              <i class="icon ion-android-checkbox"></i> Check the Order
-          </a>
-          <a menu-close href="#/app/order" class="item item-icon-left">
-              <i class="icon ion-android-cart"></i> Review your Cart
-          </a>
-          <a menu-close href="#/app/track" class="item item-icon-left">
-              <i class="icon ion-android-boat"></i> Track Progress
-          </a>
-          <a menu-close href="#/app/history" class="item item-icon-left">
-              <i class="icon ion-android-bookmark"></i> Look up History
-          </a>
-          <icon-item menu-close ng-click="login()" class="item item-icon-left">
-              <i class="icon ion-settings"></i> Account Login
-          </icon-item>
-          <a menu-close href="#/app/shirts" class="item item-icon-left">
-              <i class="icon ion-android-favorite"></i> Set up Favorites
-          </a>
-          <a menu-close href="#/app/feedback" class="item item-icon-left">
-              <i class="icon ion-android-attach"></i> Send Feedback
-          </a>
-          <a menu-close href="http://www.on2t.matadormultimedia.net/about-2/" class="item item-icon-left">
+          <a menu-close href="http://www.on2t.com/about-2/" class="item item-icon-left">
               <i class="icon ion-home"></i> About Us
           </a>
       </ion-list>

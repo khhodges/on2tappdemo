@@ -95,18 +95,20 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
         }
         return name;
     }
-//    $scope.getContactsList = function () {
-//        $cordovaContacts.find({ filter: 'ken' }).then(function (results) {
-//            $scope.contacts = results;
-//            //alert("results: " + JSON.stringify(results));
-//        }, function (error) {
-//            alert("error" + error);
-//            console.log("Error: " + error);
-//        });
-//    }
 })
 
-.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, shirtService) {
+.controller('DesignCtrl', function ($scope, design) {
+    $scope.design = design;
+})
+
+.controller('TodosCtrl', function ($scope, todos) {
+    $scope.todos = todos;
+})
+
+.controller('TodoCtrl', function ($scope) {
+})
+
+.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, ShirtService) {
     $scope.styleId = $stateParams.styleId;
     if ($rootScope.products.length === null) alert("Oops! Please reload");
     for (i = 0; i < $rootScope.products.length; i++) {
@@ -130,7 +132,7 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     });
 })
 
-.controller('detailsCtrl', function ($scope, $rootScope, JsonService, $stateParams) {
+.controller('detailsCtrl', function ($scope, $rootScope, $stateParams) {
     var myId = 0;
     myId = $stateParams.id - 1;
     var myImages = [];
@@ -222,6 +224,7 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
 })
 
 .controller('QuoteCtrl', function ($scope, QuoteService) {
+
     QuoteService.get(function (data) {
         $scope.quotations = data.quotes;
     })

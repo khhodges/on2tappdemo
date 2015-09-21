@@ -1,7 +1,13 @@
 <ion-view view-title="{{quotations.length}} Quotations">
   <ion-content>
+      <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+              <input type="text" placeholder="Text" ng-model="filter">
+          </label>
+          &nbsp;{{filtered.length}} Found
+      </div>
     <ion-list>
-      <ion-item ng-repeat="quote in quotations" href="#/app/garments">        
+      <ion-item ng-repeat="quote in filtered = (quotations | filter:filter)" href="#/app/garments">        
         {{quote.quote}}
       </ion-item>
     </ion-list>
