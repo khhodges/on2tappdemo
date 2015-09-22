@@ -69,9 +69,20 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
                 s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
             }
 
-            if (contact.ContactAddress && contact.ContactAddress.length) {
-                s += "Address: " + contact.ContactAddress[0].value + "<br/>";
-            }
+            if (contact.ContactAddresses && contact.ContactAddresses.length) {
+                s += "Address: " + contact.ContactAddresses[0].value + "<br/>";
+                for ( j=0; j<contact.addresses.length; j++) {
+                    (s += "Pref: " + contact.addresses[j].pref + "<br/>" +
+                            "Type: " + contact.addresses[j].type + "<br/>" +
+                            "Formatted: " + contact.addresses[j].formatted + "<br/>" +
+                            "Street Address: " + contact.addresses[j].streetAddress + "<br/>" +
+                            "Locality: " + contact.addresses[j].locality + "<br/>" +
+                            "Region: " + contact.addresses[j].region + "<br/>" +
+                            "Postal Code: " + contact.addresses[j].postalCode + "<br/>" +
+                            "Country: " + contact.addresses[j].country) + "<br/>";
+                }
+            };
+            
 
             if (contact.photos && contact.photos.length) {
                 s += "<p><img src='" + contact.photos[0].value + "'></p>";

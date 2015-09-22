@@ -46,18 +46,18 @@
                 template: '#/app/location',
                 details: [{
                     url: 'http://i.telegraph.co.uk/multimedia/archive/02338/Venice-rialto_2338359b.jpg',
-                    location: '45,50',
+                    date: 'Sep 23, 2015',
                     Name: 'Vanice, Italy'
                 },
                 ]
             },
             {
                 id: 'Product',
-                value: 'Anvil Ladies Ringspun T - 880',
+                value: 'Click to select the garment',
                 template: '#/app/garments',
                 details: [{
                     Brand: 'Anvil',
-                    Name: 'Anvil Ladies Ringspun T ',
+                    Name: 'Click to select the garment',
                     Style: '880',
                     Color: 'white',
                     Size: 'large'
@@ -65,7 +65,7 @@
             },
             {
                 id: 'ShippingTo',
-                value: 'Christine Hamer-Hodges, 1230 Hillsboro Mile, Hillsboro Beach, Florida, 33062, USA',
+                value: 'Click to add the shipping address',
                 template: '#/app/contacts',
                 details: [{
                     Name: 'Christine Hamer-Hodges',
