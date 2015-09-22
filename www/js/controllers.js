@@ -66,16 +66,17 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
             }
 
             if (contact.addresses && contact.addresses.length) {
-                s += "Address: " + contact.addresses[0].value + "<br/>";
-                for ( j=0; j<contact.addresses.length; j++) {
-                    (s += "<br />"+j.toString() +"...<br />Pref: " + contact.addresses[j].pref + "<br/>" +
-                            "Type: " + contact.addresses[j].type + "<br/>" +
-                            "Formatted: " + contact.addresses[j].formatted + "<br/>" +
-                            "Street Address: " + contact.addresses[j].streetAddress + "<br/>" +
-                            "Locality: " + contact.addresses[j].locality + "<br/>" +
-                            "Region: " + contact.addresses[j].region + "<br/>" +
-                            "Postal Code: " + contact.addresses[j].postalCode + "<br/>" +
-                            "Country: " + contact.addresses[j].country) + "<br/>";
+
+                for (j = 0; j < contact.addresses.length; j++) {
+                    if (contact.addresses[j].streetAddress) {
+                        (s += "<br />" + j.toString() + "...<br />"
+                            +
+                                "Street Address: " + contact.addresses[j].streetAddress + "<br/>" +
+                                "Locality: " + contact.addresses[j].locality + "<br/>" +
+                                "Region: " + contact.addresses[j].region + "<br/>" +
+                                "Postal Code: " + contact.addresses[j].postalCode + "<br/>" +
+                                "Country: " + contact.addresses[j].country) + "<br/>";
+                    }
                 }
             }
             
