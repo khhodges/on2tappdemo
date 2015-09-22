@@ -1,24 +1,36 @@
-﻿<ion-view view-title="{{shirt.categoryIdentifier | uppercase}} {{shirt.properties.brand}} {{shirt.properties.style}} {{shirt.categoryIdentifier}}  {{shirt.style}}">
+﻿<ion-view view-title="{{shirt.name}} {{shirt.style}}">
     <ion-content>
         <div class="card has-header" ng-controller='shirtCardCtrl' ng-click="openModal()">
-            <div class="row responsive">
-                <div class="col"><img ng-src="{{shirt.colors[1].images[0].url}}" height="50"/></div>
-                <div class="col"><img ng-src="{{shirt.colors[2].images[1].url}}" height="50" /></div>
-                <div class="col"><img ng-src="{{shirt.colors[3].images[2].url}}" height="50" /></div>
-                <div class="col"><img ng-src="{{shirt.colors[4].images[3].url}}" height="50" /></div>
-            </div>
-            <div class="item item-divider">
-                {{shirt.name}} in {{shirt.colors.length}} colors
-            </div>
-                <table border="1" cellpadding="2" cellspacing="2">                    
-                    <tr>
-                        <td  class="checkbox"  ng-repeat="item in shirt.colors" bgcolor="#{{item.hex}}"></td></tr></table>
+            <center>
+                <div class="row responsive">
+                    <div class="col"><img ng-src="{{shirt.colors[1].images[0].url}}" height="50" /></div>
+                    <div class="col"><img ng-src="{{shirt.colors[2].images[1].url}}" height="50" /></div>
+                    <div class="col"><img ng-src="{{shirt.colors[3].images[2].url}}" height="50" /></div>
+                    <div class="col"><img ng-src="{{shirt.colors[4].images[3].url}}" height="50" /></div>
+                </div>
+                <script id="my-popover.html" type="text/ng-template">
+                    <ion-popover-view>
+                        <ion-content scrollbar-y="true">
+                            &nbsp;<table border="1" cellpadding="2" cellspacing="2" ng-repeat="item in shirt.colors">
+                                <tr><td width="20"></td><td class="checkbox" width="20" bgcolor="#{{item.hex}}"></td><td width="10"></td><td><input type="checkbox" value=""> {{item.name}}</td></tr>
+                            </table>
+                        </ion-content>
+                    </ion-popover-view>
+                </script>
+                <table border="1" cellpadding="2" cellspacing="2">
+                    <tr ng-click="openPopover($event,1)">
+                        <td class="checkbox" ng-repeat="item in shirt.colors" bgcolor="#{{item.hex}}"></td>
+                    </tr>
+                </table>
+            </center>
             <div class="item item-text-wrap">
                 {{shirt.description}}
                 <div class="item item-divider">
-                   {{shirt.comments}} {{shirt.properties.material}}
+                    {{shirt.comments}} {{shirt.properties.material}}, pick a size:
                 </div>
             </div>
+            <ion-radio ng-model="size" ng-repeat="item in shirt.colors[0].sizes">{{item}}</ion-radio>
         </div>
-    </ion-content></ion-view>
+    </ion-content>
+</ion-view>
 

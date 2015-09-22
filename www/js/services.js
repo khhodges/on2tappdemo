@@ -46,10 +46,8 @@
                 template: '#/app/location',
                 details: [{
                     url: 'https://www.bing.com/images/search?q=venice+best+pictures&id=817EFDC90366F04700FE5B59A89B778C9B9FD02D&FORM=IQFRBA',
-                    latlon: '45,50',
-                    Country: 'Italy',
-                    City: 'Vanice',
-                    Street:'via Grand Canal'
+                    location: '45,50',
+                    Name: 'Vanice, Italy'
                 },
                 ]
             },

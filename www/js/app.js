@@ -57,6 +57,17 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 }
             }
         })
+       
+        .state('app.update', {
+            url: '/update',
+            views: {
+                'menuContent': {
+                    controller: 'DesignCtrl',
+                    templateUrl: 'templates/update.html'
+                    
+                }
+            }
+        })
         .state('app.todos', {
             url: '/todos',
             views: {

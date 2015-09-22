@@ -5,7 +5,7 @@
     <ion-content>
         <ion-list>
             <ion-item>
-                <a ng-repeat="option in design" ng-if="option.id != 'Charges' " href="{{option.template}}" class="item item-icon-left">
+                <a ng-repeat="option in update" ng-if="option.id != 'Charges' " href="{{option.template}}" class="item item-icon-left">
                     <i class="icon ion-wand"></i>
                     <b>{{option.id }}</b> -- {{option.value}}
                 </a>

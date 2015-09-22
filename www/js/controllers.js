@@ -97,8 +97,9 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     }
 })
 
-.controller('DesignCtrl', function ($scope, design) {
+.controller('DesignCtrl', function ($scope, $rootScope, design) {
     $scope.design = design;
+    $rootScope.updates = design;
 })
 
 .controller('TodosCtrl', function ($scope, todos) {
@@ -108,7 +109,42 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
 .controller('TodoCtrl', function ($scope) {
 })
 
-.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, ShirtService) {
+.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, ShirtService, $ionicPopover) {
+
+    // .fromTemplate() method
+    var template = '<ion-popover-view><ion-header-bar> <h1 class="title">My Popover Title</h1> </ion-header-bar> <ion-content> Hello! </ion-content></ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+
+    // .fromTemplateUrl() method
+    $ionicPopover.fromTemplateUrl('my-popover.html', {
+        scope: $scope
+    }).then(function (popover) {
+        $scope.popover = popover;
+    });
+
+
+    $scope.openPopover = function ($event, button) {
+        $scope.button = button;
+        $scope.popover.show($event);
+    };
+    $scope.closePopover = function () {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function () {
+        $scope.popover.remove();
+    });
+    // Execute action on hide popover
+    $scope.$on('popover.hidden', function () {
+        // Execute action
+    });
+    // Execute action on remove popover
+    $scope.$on('popover.removed', function () {
+        // Execute action
+    });
     $scope.styleId = $stateParams.styleId;
     if ($rootScope.products.length === null) alert("Oops! Please reload");
     for (i = 0; i < $rootScope.products.length; i++) {
@@ -223,11 +259,17 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     ];
 })
 
-.controller('QuoteCtrl', function ($scope, QuoteService) {
+.controller('QuoteCtrl', function ($scope, QuoteService, $window, $rootScope) {
 
     QuoteService.get(function (data) {
         $scope.quotations = data.quotes;
-    })
+    });
+
+    $scope.alert = function (text) {
+        $rootScope.updates[0].value = text;
+        $scope.newMessage = text;
+        //$window.alert($rootScope.updates);
+        };
 }
 )
 .controller('ErrorCtrl', function ($rootScope) {
