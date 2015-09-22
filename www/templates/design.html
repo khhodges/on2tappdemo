@@ -3,6 +3,20 @@
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-content>
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img ng-src="{{design[1].details[0].url}}">
+                <h2>{{design[0].value}}</h2>
+                <p>{{design[1].value}}</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{design[1].details[0].url}}">
+
+            </div>
+        </div>
+
         <ion-list>
             <ion-item>
                 <a ng-repeat="option in design" ng-if="option.id != 'Charges' " href="{{option.template}}" class="item item-icon-left">

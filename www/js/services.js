@@ -45,7 +45,7 @@
                 value: 'Venice, Italy',
                 template: '#/app/location',
                 details: [{
-                    url: 'https://www.bing.com/images/search?q=venice+best+pictures&id=817EFDC90366F04700FE5B59A89B778C9B9FD02D&FORM=IQFRBA',
+                    url: 'http://i.telegraph.co.uk/multimedia/archive/02338/Venice-rialto_2338359b.jpg',
                     location: '45,50',
                     Name: 'Vanice, Italy'
                 },
