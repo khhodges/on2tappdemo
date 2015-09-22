@@ -65,11 +65,15 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
                 s += "Email: " + contact.emails[0].value + "<br/>";
             }
 
+            if (contact.phoneNumbers && contact.phoneNumbers.length) {
+                s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
+            }
+
             if (contact.addresses && contact.addresses.length) {
 
                 for (j = 0; j < contact.addresses.length; j++) {
                     if (contact.addresses[j].streetAddress) {
-                        (s += "<br />" + j.toString() + "...<br />"
+                        (s += "<br /><button onclick='saveAddress(j)' >" + j.toString() + "...</button><br />"
                             +
                                 "Street Address: " + contact.addresses[j].streetAddress + "<br/>" +
                                 "Locality: " + contact.addresses[j].locality + "<br/>" +
@@ -79,12 +83,9 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
                     }
                 }
             }
-            
-             if (contact.phoneNumbers && contact.phoneNumbers.length) {
-                s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
-             }
 
-             if (contact.photos && contact.photos.length) {
+
+            if (contact.photos && contact.photos.length) {
                 s += "<p><img src='" + contact.photos[0].value + "'></p>";
             }
 
@@ -96,6 +97,9 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
         });
     }
 
+    function saveAddress(id) {
+        alert("Entery " + id.toString());
+    }
     /*
     Handles iOS not returning displayName or returning null/""
     */
@@ -282,11 +286,11 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
         $rootScope.updates[0].value = text;
         $scope.newMessage = text;
         //$window.alert($rootScope.updates);
-        };
+    };
 }
 )
 .controller('ErrorCtrl', function ($rootScope) {
-    
+
 })
 
 .controller('PlaylistCtrl', function ($scope, $stateParams) {
