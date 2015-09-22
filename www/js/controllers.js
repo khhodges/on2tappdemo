@@ -59,18 +59,14 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
             console.log('The following contact has been selected:' + JSON.stringify(contact));
             //Build a simple string to display the Contact - would be better in Handlebars
             var s = "<div class='flex-item:nth-child(1)'";
-            s += "<h2>" + getName(contact) + "</h2>";
+            s += "<h1>" + getName(contact) + "</h1>" + "<br/>";
 
             if (contact.emails && contact.emails.length) {
                 s += "Email: " + contact.emails[0].value + "<br/>";
             }
 
-            if (contact.phoneNumbers && contact.phoneNumbers.length) {
-                s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
-            }
-
-            if (contact.ContactAddresses && contact.ContactAddresses.length) {
-                s += "Address: " + contact.ContactAddresses[0].value + "<br/>";
+            if (contact.addresses && contact.addresses.length) {
+                s += "Address: " + contact.addresses[0].value + "<br/>";
                 for ( j=0; j<contact.addresses.length; j++) {
                     (s += "Pref: " + contact.addresses[j].pref + "<br/>" +
                             "Type: " + contact.addresses[j].type + "<br/>" +
@@ -81,15 +77,20 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
                             "Postal Code: " + contact.addresses[j].postalCode + "<br/>" +
                             "Country: " + contact.addresses[j].country) + "<br/>";
                 }
-            };
+            }
             
+             if (contact.phoneNumbers && contact.phoneNumbers.length) {
+                s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
+             }
 
-            if (contact.photos && contact.photos.length) {
+             if (contact.photos && contact.photos.length) {
                 s += "<p><img src='" + contact.photos[0].value + "'></p>";
             }
 
             document.querySelector("#selectedContact").innerHTML = s;
-        }, function (err) {
+        },
+
+        function (err) {
             console.log('Error: ' + err);
         });
     }
