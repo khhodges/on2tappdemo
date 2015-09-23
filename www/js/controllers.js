@@ -105,7 +105,7 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     }
 
     function saveAddress(id) {
-        alert("Entery " + id.toString());
+        alert("Entry " + id.toString());
     }
     /*
     Handles iOS not returning displayName or returning null/""
