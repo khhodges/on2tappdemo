@@ -89,6 +89,12 @@
                     Shipping: '5.00',
                     Priority: 'Ground',
                     Destination:'Domestic'
+                },
+                {
+                    id: 'Contact',
+                    value: 'unknown',
+                    template: '#/app/contact',
+                    details: []
                 }]
             }
         ],

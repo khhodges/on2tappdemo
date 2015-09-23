@@ -64,6 +64,7 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     function doContactPicker() {
         navigator.contacts.pickContact(function (contact) {
             console.log('The following contact has been selected:' + JSON.stringify(contact));
+            $rootScope.updates[5].details = contact;
             //Build a simple string to display the Contact - would be better in Handlebars
             var s = "<div class='flex-item:nth-child(1)'";
             s += "<h1>" + getName(contact) + "</h1>" + "<br/>";
