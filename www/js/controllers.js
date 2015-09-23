@@ -50,6 +50,13 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     //alert("Contacts" + $cordovaContacts);
     document.addEventListener("deviceready", init, false);
 
+    $scope.alert = function (text) {
+        $rootScope.updates[2].value = text;
+        //$scope.newMessage = text;
+        //$window.alert($rootScope.updates);
+    };
+
+
     function init() {
         document.querySelector("#pickContact").addEventListener("touchend", doContactPicker, false);
     }
@@ -73,7 +80,7 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
 
                 for (j = 0; j < contact.addresses.length; j++) {
                     if (contact.addresses[j].streetAddress) {
-                        (s += "<br /><button onclick='saveAddress(j)' >" + j.toString() + "...</button><br />"
+                        (s += "<br /><button ng-click='saveAddress(j)' >" + j.toString() + "...</button><br />"
                             +
                                 "Street Address: " + contact.addresses[j].streetAddress + "<br/>" +
                                 "Locality: " + contact.addresses[j].locality + "<br/>" +
