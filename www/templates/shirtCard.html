@@ -1,24 +1,41 @@
-﻿<ion-view view-title="{{shirt.categoryIdentifier | uppercase}} {{shirt.properties.brand}} {{shirt.properties.style}} {{shirt.categoryIdentifier}}  {{shirt.style}}">
+﻿<!--<script id="my-popover" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content scrollbar-y="true">
+            &nbsp;<table border="1" cellpadding="2" cellspacing="2" ng-repeat="item in shirt.colors">
+                <tr><td height="30"></td><td class="checkbox" width="25" height="25" bgcolor="#{{item.hex}}"></td><td width="10"></td><td><input type="checkbox" onchange="$scope.popover.updateColor(this.value, this.checked)" width="25" height="25"> {{item.name}}</td></tr>
+            </table>
+        </ion-content>
+    </ion-popover-view>
+</script>-->
+<ion-view view-title="{{shirt.name}} {{shirt.style}}" ng-model="design[2].value">
     <ion-content>
-        <div class="card has-header" ng-controller='shirtCardCtrl' ng-click="openModal()">
-            <div class="row responsive">
-                <div class="col"><img ng-src="{{shirt.colors[1].images[0].url}}" height="50"/></div>
-                <div class="col"><img ng-src="{{shirt.colors[2].images[1].url}}" height="50" /></div>
-                <div class="col"><img ng-src="{{shirt.colors[3].images[2].url}}" height="50" /></div>
-                <div class="col"><img ng-src="{{shirt.colors[4].images[3].url}}" height="50" /></div>
+        <div class="card has-header" ng-controller='shirtCardCtrl'>
+            <div>
+                <center>
+                    <div class="row">
+                        <div class="col">
+                            <div height="30" class="checkbox" width="30" ng-repeat="item in shirt.colors"  ng-click="showConfirm(item)" bgcolor="#{{item.hex}}">{{item.name}} <br/>
+                                <img ng-src="{{item.images[1].url}}" height="50" />
+                            </div>
+                        </div>
+                    </div>
+                </center>
             </div>
-            <div class="item item-divider">
-                {{shirt.name}} in {{shirt.colors.length}} colors
-            </div>
-                <table border="1" cellpadding="2" cellspacing="2">                    
-                    <tr>
-                        <td  class="checkbox"  ng-repeat="item in shirt.colors" bgcolor="#{{item.hex}}"></td></tr></table>
+
             <div class="item item-text-wrap">
                 {{shirt.description}}
                 <div class="item item-divider">
-                   {{shirt.comments}} {{shirt.properties.material}}
+                    {{shirt.comments}} {{shirt.properties.material}} <br /> Pick a color to see and select size availability:
                 </div>
+                {{design[2].details.Color}} - {{design[2].details.Size}}
             </div>
+            <ion-radio ng-click="updateShirtDetails(item, shirt.name, shirt.brand, shirt.style)" ng-repeat="item in shirt.colors[0].sizes" value="{{item
+}}">{{item}}</ion-radio>
         </div>
-    </ion-content></ion-view>
+        <a menu-close href="#/app/design" class="item item-icon-left">
+            <i class="icon ion-android-attach"></i> Use this Address and Return
+        </a>
+        <br/><br />
+    </ion-content>
+</ion-view>
 

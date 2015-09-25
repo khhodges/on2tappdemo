@@ -26,12 +26,10 @@
             this.todos.forEach(function (todo) {
                 if (todo.id === todoId) dfd.resolve(todo)
             })
-
             return dfd.promise
         }
     }
 })
-
 .service('DesignService', function ($q) {
     return {
         design: [
@@ -45,37 +43,38 @@
                 value: 'Venice, Italy',
                 template: '#/app/location',
                 details: [{
-                    url: 'https://www.bing.com/images/search?q=venice+best+pictures&id=817EFDC90366F04700FE5B59A89B778C9B9FD02D&FORM=IQFRBA',
-                    latlon: '45,50',
-                    Country: 'Italy',
-                    City: 'Vanice',
-                    Street:'via Grand Canal'
+                    url: 'http://i.telegraph.co.uk/multimedia/archive/02338/Venice-rialto_2338359b.jpg',
+                    date: 'Sep 23, 2015',
+                    Name: 'Vanice, Italy'
                 },
                 ]
             },
             {
                 id: 'Product',
-                value: 'Anvil Ladies Ringspun T - 880',
+                value: 'Click to select the garment',
                 template: '#/app/garments',
                 details: [{
-                    Brand: 'Anvil',
-                    Name: 'Anvil Ladies Ringspun T ',
-                    Style: '880',
-                    Color: 'white',
-                    Size: 'large'
+                    Brand: '',
+                    Name: 'Click to select the garment',
+                    Style: '',
+                    Color: 'undefined',
+                    Size: 'undefined'
                 }]
             },
             {
                 id: 'ShippingTo',
-                value: 'Christine Hamer-Hodges, 1230 Hillsboro Mile, Hillsboro Beach, Florida, 33062, USA',
-                template: '#/app/contacts',
+                value: 'Click to add the shipping address',
+                template: '#/app/contact',
                 details: [{
                     Name: 'Christine Hamer-Hodges',
+                    Phone: '',
+                    Email:'',
                     Street: 'Hillsboro Mile',
                     Apt: '208',
                     City: 'Hillsboro Beach',
                     Zip: '33062',
-                    Country:'USA'
+                    Country: 'USA',
+                    Formatted:''
                 }]
             },
             {
@@ -107,25 +106,29 @@
     }
 })
 
+//.service('aService', function ($q) {
+//    return {
+//        quotations: 
+//    }
+//})
+
 .factory('ProductService', function ($resource) {
     //alert("GetShirtsA");
     var myProducts = [];
     myProducts = $resource('data/productlist.json');
     return myProducts;
 })
-    .factory('QuoteService', function ($resource) {
-        //alert("GetShirtsA");
-        var myQuotations = [];
-        myQuotations = $resource('data/quotes.json');
-        return myQuotations;
-    })
-    .factory('CategoryService', function ($resource) {
-        //alert("GetShirtsA");
-        var myCategory = [];
-        myProducts = $resource('data/categories.json');
-        return myCategory;
-    })
-
+.factory('QuoteService', function ($resource) {
+    var myQuotations = [];
+    myQuotations = $resource('data/quotes.json');
+    return myQuotations;
+})
+.factory('CategoryService', function ($resource) {
+    //alert("GetShirtsA");
+    var myCategory = [];
+    myProducts = $resource('data/categories.json');
+    return myCategory;
+})
 .factory('ProductServicey', function ($resource) {
     var myProducts = [];
     return {

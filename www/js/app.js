@@ -125,6 +125,15 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 }
             }
         })
+                .state('app.contact', {
+                    url: '/contact',
+                    views: {
+                        'menuContent': {
+                            templateUrl: 'templates/SelectedContact.html',
+                            controller: 'ContactsCtrl'
+                        }
+                    }
+                })
         .state('app.image', {
             url: '/image/:id',
             views: {
@@ -188,12 +197,12 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 }
             }
         })
-        .state('app.track', {
-            url: "/track",
+        .state('app.color', {
+            url: "/color/:styleId",
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/tracking.html',
-                    controller: 'GarmentsCtrl'
+                    templateUrl: 'templates/colorSlide.html',
+                    controller: 'shirtCardCtrl'
 
                 }
             }

@@ -46,7 +46,7 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
         $rootScope.images = data.images;
     })
 })
-.controller('ContactsCtrl', function ($scope, $cordovaContacts) {
+.controller('ContactsCtrl', function ($rootScope, $scope, $cordovaContacts) {
     //alert("Contacts" + $cordovaContacts);
     document.addEventListener("deviceready", init, false);
 
@@ -57,28 +57,43 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     function doContactPicker() {
         navigator.contacts.pickContact(function (contact) {
             console.log('The following contact has been selected:' + JSON.stringify(contact));
+         contact.name.formatted = getName(contact);
+            $rootScope.contact = contact;
             //Build a simple string to display the Contact - would be better in Handlebars
-            var s = "<div class='flex-item:nth-child(1)'";
-            s += "<h2>" + getName(contact) + "</h2>";
+            //var s = "<div class='flex-item:nth-child(1)'";
+            //s += "<h1>" + getName(contact) + "</h1>" + "<br/>";
 
-            if (contact.emails && contact.emails.length) {
-                s += "Email: " + contact.emails[0].value + "<br/>";
-            }
+            //if (contact.emails && contact.emails.length) {
+            //    s += "Email: " + contact.emails[0].value + "<br/>";
+            //}
 
-            if (contact.phoneNumbers && contact.phoneNumbers.length) {
-                s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
-            }
+            //if (contact.phoneNumbers && contact.phoneNumbers.length) {
+            //    s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
+            //}
 
-            if (contact.ContactAddress && contact.ContactAddress.length) {
-                s += "Address: " + contact.ContactAddress[0].value + "<br/>";
-            }
+            //if (contact.addresses && contact.addresses.length) {
 
-            if (contact.photos && contact.photos.length) {
-                s += "<p><img src='" + contact.photos[0].value + "'></p>";
-            }
+            //    for (j = 0; j < contact.addresses.length; j++) {
+            //        if (contact.addresses[j].streetAddress) {
+            //            (s += "<br /><button ng-click='saveAddress(j)' >" + j.toString() + "...</button><br />"
+            //                +
+            //                    "Street Address: " + contact.addresses[j].streetAddress + "<br/>" +
+            //                    "Locality: " + contact.addresses[j].locality + "<br/>" +
+            //                    "Region: " + contact.addresses[j].region + "<br/>" +
+            //                    "Postal Code: " + contact.addresses[j].postalCode + "<br/>" +
+            //                    "Country: " + contact.addresses[j].country) + "<br/>";
+            //        }
+            //    }
+            //}
 
-            document.querySelector("#selectedContact").innerHTML = s;
-        }, function (err) {
+            //if (contact.photos && contact.photos.length) {
+            //    s += "<p><img src='" + contact.photos[0].value + "'></p>";
+            //}
+
+            //document.querySelector("#selectedContact").innerHTML = s;
+        },
+
+        function (err) {
             console.log('Error: ' + err);
         });
     }
@@ -97,8 +112,9 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     }
 })
 
-.controller('DesignCtrl', function ($scope, design) {
-    $scope.design = design;
+.controller('DesignCtrl', function ($scope, $rootScope, design) {
+    //$scope.design = design;
+    $rootScope.design = design;
 })
 
 .controller('TodosCtrl', function ($scope, todos) {
@@ -108,7 +124,108 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
 .controller('TodoCtrl', function ($scope) {
 })
 
-.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, ShirtService) {
+.controller('ContactCtrl', function ($rootScope, $scope) {
+    $scope.pickAddress = function (street,city,state,zip,country) {
+        $rootScope.design[3].details.Street = street;
+        $rootScope.design[3].details.City = city;
+        $rootScope.design[3].details.State = state;
+        $rootScope.design[3].details.Zip = zip;
+        $rootScope.design[3].details.Country = country;
+    };
+})
+
+.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, ShirtService, $ionicPopover, $ionicSlideBoxDelegate, $ionicPopup, $timeout) {
+    // .fromTemplate() method
+    var template = '<ion-popover-view><ion-header-bar> <h1 class="title">Hello</h1> </ion-header-bar> <ion-content></ion-content></ion-popover-view>';
+    $scope.showPopup = function () {
+        $scope.data = {}
+
+        $ionicPopup.show({
+            template: '<input type="password" ng-model="data.wifi">',
+            title: 'Enter Wi-Fi Password',
+            subTitle: 'Please use normal things',
+            scope: $scope,
+            buttons: [
+              { text: 'Cancel' },
+              {
+                  text: '<b>Save</b>',
+                  type: 'button-positive',
+                  onTap: function (e) {
+                      if (!$scope.data.wifi) {
+                          //don't allow the user to close unless he enters wifi password
+                          e.preventDefault();
+                      } else {
+                          return $scope.data.wifi;
+                      }
+                  }
+              }
+            ]
+        });
+        myPopup.then(function (res) {
+            console.log('Tapped!', res);
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 3000);
+    }
+
+// A confirm dialog
+$scope.showConfirm = function(item ) {
+    var confirmPopup = $ionicPopup.confirm({
+        title: item.name,
+        template: item.sizes.toString()
+    });
+    confirmPopup.then(function(res) {
+        if (res) {
+            $rootScope.design[2].details.Color = item.name;
+            
+            console.log('You are sure');
+        } else {
+            console.log('You are not sure');
+        }
+    })}
+
+// An alert dialog
+$scope.showAlert = function() {
+    var alertPopup = $ionicPopup.alert({
+        title: 'Don\'t eat that!',
+        template: 'It might taste good'
+    });
+    alertPopup.then(function(res) {
+        console.log('Thank you for not eating my delicious ice cream cone');
+    });
+}
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope      
+    });
+    // .fromTemplateUrl() method
+    $ionicPopover.fromTemplateUrl('my-popover.html', {
+        scope: $scope
+    }).then(function (popover) {
+        $scope.popover = popover;    }); 
+    $scope.openPopover = function ($event, button) {
+        $scope.button = button;
+        $scope.popover.show($event);
+        $scope.popover.updateColor = function (color, isChecked) {
+            $rootScope.design[2].details.Sizes = color;
+        }
+    };
+    $scope.closePopover = function () {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function () {
+        $scope.popover.remove();
+    });
+    // Execute action on hide popover
+    $scope.$on('popover.hidden', function () {
+        // Execute action
+    });
+    // Execute action on remove popover
+    $scope.$on('popover.removed', function () {
+        // Execute action
+    });
     $scope.styleId = $stateParams.styleId;
     if ($rootScope.products.length === null) alert("Oops! Please reload");
     for (i = 0; i < $rootScope.products.length; i++) {
@@ -127,9 +244,24 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     .success(function (data) {
         $scope.shirt = data;
     })
+        
     .error(function (data) {
         alert("ERROR");
     });
+
+    $scope.nextSlide = function () {
+        $ionicSlideBoxDelegate.next();
+    }
+
+    $scope.updateShirtDetails = function(size, garment, brand,style){
+        //alert(size + garment);
+        $rootScope.design[2].details.Size = size;
+        //$scope.shirt.colors[0].sizes
+        $rootScope.design[2].value = garment;
+        $rootScope.design[2].details.Name = garment;
+        $rootScope.design[2].details.Brand = brand;
+        $rootScope.design[2].details.Style = style;
+    };
 })
 
 .controller('detailsCtrl', function ($scope, $rootScope, $stateParams) {
@@ -223,15 +355,19 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     ];
 })
 
-.controller('QuoteCtrl', function ($scope, QuoteService) {
+.controller('QuoteCtrl', function ($scope, QuoteService, $rootScope) {
 
     QuoteService.get(function (data) {
         $scope.quotations = data.quotes;
-    })
+    });
+
+    $scope.pickMessage = function (text) {
+        $rootScope.design[0].value = text;
+    };
 }
 )
 .controller('ErrorCtrl', function ($rootScope) {
-    
+
 })
 
 .controller('PlaylistCtrl', function ($scope, $stateParams) {
