@@ -4,30 +4,34 @@
     </ion-nav-buttons>
     <ion-content>
         <center>
-            <button id="pickContact">List and pick the Shipping Details</button>
+            <button class="button button-positive" id="pickContact">Select a Shipping Address</button>
         </center>
-        <div class="list card">
 
             <div class="item item-avatar">
                 <img src="{{contact.photos[0].value}}" />
-                <input ng-model="design[3].details.Name" placeholder="Name" value="{{contact.name.formatted}}" /><br />
-                <input ng-model="design[3].details.Phone" placeholder="Phone Number" value="{{contact.phoneNumbers[0].value}}" /><br />
-                <input ng-model="design[3].details.Email" placeholder="Email" value="{{contact.emails[0].value}}" /><br />
-                <input ng-model="design[3].details.Formatted" placeholder="Formatted Address"><br />
+                <input ng-model="design[3].details.Name" placeholder="Name" /><br />
+                <input ng-model="design[3].details.Phone" placeholder="Phone Number" />&nbsp;
+                <input ng-model="design[3].details.Email" placeholder="Email" /><br />
                 <input ng-model="design[3].details.Street" placeholder="Street"><br />
-                <input ng-model="design[3].details.City" placeholder="City"><br />
-                <input ng-model="design[3].details.State" width="6" placeholder="State" /><br />
-                <input ng-model="design[3].details.Zip" width="6" placeholder="Zip:" /><br />
-                <input ng-model="design[3].details.Country" width="2" placeholder="Country" />
+                <input ng-model="design[3].details.City" placeholder="City">&nbsp;
+                <input ng-model="design[3].details.State" placeholder="State" /><br />
+                <input ng-model="design[3].details.Zip"  placeholder="Zip:" />&nbsp;
+                <input ng-model="design[3].details.Country" placeholder="Country" />
             </div>
+            <a menu-close href="#/app/design" class="item item-icon-left">
+                <i class="icon ion-android-attach"></i> Select, edit and use the above Address
+            </a>
+             <div class="list card">
+        <p>Name: {{contact.displayName}}</p>
+        <p>Phone: {{contact.phoneNumbers[0].value}}</p>
+        <p>Email: {{contact.emails[0].value}}</p>
         </div>
-
         <ion-list>
             <ion-item>
-                <a ng-repeat="address in contact.addresses" class="item item-icon-left" ng-click="pickAddress" ng-class="{item.selected: selected}">
+                <a ng-repeat="address in contact.addresses" class="item item-icon-left" ng-click="pickAddress(contact.displayName, contact.phoneNumbers[0].value, contact.emails[0].value, address.streetAddress,address.locality, address.region,address.postalCode,address.country)" ng-class="{item.selected: selected}">
                     <i class="icon ion-android-checkbox-outline"></i>
 
-                    <p>{{address.formatted}}</p>
+
                     <p>Street: {{address.streetAddress}}</p>
                     <p>City: {{address.locality}}</p>
                     <p>State: {{address.region}}</p>
@@ -37,9 +41,7 @@
                 </a>
             </ion-item>
         </ion-list>
-        <a menu-close href="#/app/design" class="item item-icon-left">
-            <i class="icon ion-android-attach"></i> Use this Address and Return
-        </a>
+
     </ion-content>
 </ion-view>
 

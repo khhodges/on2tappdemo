@@ -23,5 +23,6 @@
   <content src="index.html"></content>
   <gap:plugin name="org.apache.cordova.contacts" version="0.2.13" />
   <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
-
+  <gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
+<feature name="Camera"> <param name="android-package" value="org.apache.cordova.CameraLauncher"/> </feature>
 </widget>

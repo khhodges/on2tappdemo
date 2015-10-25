@@ -50,8 +50,23 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     //alert("Contacts" + $cordovaContacts);
     document.addEventListener("deviceready", init, false);
 
+    $scope.pickAddress = function (name, phone, email, street, city, state, zip, country) {
+        $rootScope.design[3].details.Name = name;
+        $rootScope.design[3].details.Phone = phone;
+        $rootScope.design[3].details.Email = email;
+        $rootScope.design[3].details.Street = street;
+        $rootScope.design[3].details.City = city;
+        $rootScope.design[3].details.State = state;
+        $rootScope.design[3].details.Zip = zip;
+        $rootScope.design[3].details.Country = country;
+        $rootScope.design[3].value = name;
+    };
+
     function init() {
         document.querySelector("#pickContact").addEventListener("touchend", doContactPicker, false);
+        alert("Do Contact Picker");
+        //pictureSource = navigator.camera.PictureSourceType;
+        //destinationType = navigator.camera.DestinationType;
     }
 
     function doContactPicker() {
@@ -59,38 +74,6 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
             console.log('The following contact has been selected:' + JSON.stringify(contact));
          contact.name.formatted = getName(contact);
             $rootScope.contact = contact;
-            //Build a simple string to display the Contact - would be better in Handlebars
-            //var s = "<div class='flex-item:nth-child(1)'";
-            //s += "<h1>" + getName(contact) + "</h1>" + "<br/>";
-
-            //if (contact.emails && contact.emails.length) {
-            //    s += "Email: " + contact.emails[0].value + "<br/>";
-            //}
-
-            //if (contact.phoneNumbers && contact.phoneNumbers.length) {
-            //    s += "Phone: " + contact.phoneNumbers[0].value + "<br/>";
-            //}
-
-            //if (contact.addresses && contact.addresses.length) {
-
-            //    for (j = 0; j < contact.addresses.length; j++) {
-            //        if (contact.addresses[j].streetAddress) {
-            //            (s += "<br /><button ng-click='saveAddress(j)' >" + j.toString() + "...</button><br />"
-            //                +
-            //                    "Street Address: " + contact.addresses[j].streetAddress + "<br/>" +
-            //                    "Locality: " + contact.addresses[j].locality + "<br/>" +
-            //                    "Region: " + contact.addresses[j].region + "<br/>" +
-            //                    "Postal Code: " + contact.addresses[j].postalCode + "<br/>" +
-            //                    "Country: " + contact.addresses[j].country) + "<br/>";
-            //        }
-            //    }
-            //}
-
-            //if (contact.photos && contact.photos.length) {
-            //    s += "<p><img src='" + contact.photos[0].value + "'></p>";
-            //}
-
-            //document.querySelector("#selectedContact").innerHTML = s;
         },
 
         function (err) {
@@ -112,38 +95,29 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
     }
 })
 
-.controller('DesignCtrl', function ($scope, $rootScope, design) {
-    //$scope.design = design;
-    $rootScope.design = design;
-})
-
-.controller('TodosCtrl', function ($scope, todos) {
-    $scope.todos = todos;
-})
-
-.controller('TodoCtrl', function ($scope) {
+.controller('DesignCtrl', function ($rootScope, DesignService) {
+    $rootScope.dataString = function () {
+        return JSON.stringify($rootScope.design);}
+    DesignService.get(function (data) {
+        $rootScope.design = data.design;
+    })
 })
 
 .controller('ContactCtrl', function ($rootScope, $scope) {
-    $scope.pickAddress = function (street,city,state,zip,country) {
-        $rootScope.design[3].details.Street = street;
-        $rootScope.design[3].details.City = city;
-        $rootScope.design[3].details.State = state;
-        $rootScope.design[3].details.Zip = zip;
-        $rootScope.design[3].details.Country = country;
-    };
+
 })
 
-.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, ShirtService, $ionicPopover, $ionicSlideBoxDelegate, $ionicPopup, $timeout) {
+.controller('shirtCardCtrl', function ($rootScope, $http, $scope, $stateParams, $ionicPopup) {
     // .fromTemplate() method
     var template = '<ion-popover-view><ion-header-bar> <h1 class="title">Hello</h1> </ion-header-bar> <ion-content></ion-content></ion-popover-view>';
-    $scope.showPopup = function () {
-        $scope.data = {}
+    $scope.showConfirm = function (item) {
+        $scope.data = {};
+        $scope.mylength = item.sizes.length;
 
         $ionicPopup.show({
-            template: '<input type="password" ng-model="data.wifi">',
-            title: 'Enter Wi-Fi Password',
-            subTitle: 'Please use normal things',
+            template: '<div class="list"><label class="item item-input item-select"><div class="input-label" >Size</div><select name="size" id = "size" ng-model="data.size"><option value="" width="20" >Please select</option><option  ng-if="mylength > 0"  value="sml">Small</option><option  ng-if="mylength > 1"  value="med" >Medium</option><option  ng-if="mylength > 2" value="lrg">Large</option><option  ng-if="mylength > 3" value="xlg">X Large</option><option  ng-if="mylength > 4" value="xxl">2X Large</option><option  ng-if="mylength > 5" value="xxxl">3X Large</option><option ng-if="mylength > 6" value="xxxxl">4X Large</option></select></label></div>',
+            title: item.name,
+            subTitle: item.sizes.toString(),
             scope: $scope,
             buttons: [
               { text: 'Cancel' },
@@ -151,118 +125,45 @@ angular.module('starter.controllers', ['ngResource', 'jsonService', 'ngCordova']
                   text: '<b>Save</b>',
                   type: 'button-positive',
                   onTap: function (e) {
-                      if (!$scope.data.wifi) {
+                      if (!$scope.data.size) {
                           //don't allow the user to close unless he enters wifi password
                           e.preventDefault();
                       } else {
-                          return $scope.data.wifi;
+                          $rootScope.design[2].details.Color = item.name;
+                          $rootScope.design[2].details.Size = $scope.data.size;
+                          $rootScope.design[2].details.Item = item;
+                          return $scope.data.size;
                       }
                   }
               }
             ]
         });
-        myPopup.then(function (res) {
-            console.log('Tapped!', res);
+    }
+        $scope.styleId = $stateParams.styleId;
+        if (!$rootScope.products) { $state.go('app.design'); }
+
+        for (i = 0; i < $rootScope.products.length; i++) {
+            if ($rootScope.products[i].style == $scope.styleId) {
+                $rootScope.shirt = $rootScope.products[i];
+                $rootScope.design.shirt = $rootScope.products[i];
+            }
+        }
+        var aShirt = $rootScope.shirt;
+        var garmentUrl = aShirt.url;
+        $http.get(garmentUrl, {
+            params: {
+                "key1": "value1",
+                "key2": "value2"
+            }
+        })
+        .success(function (data) {
+            $scope.shirt = data;
+            $rootScope.shirt.garment = data;
+        })
+        .error(function (data) {
+            alert("ERROR");
         });
-        $timeout(function () {
-            myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 3000);
-    }
-
-// A confirm dialog
-$scope.showConfirm = function(item ) {
-    var confirmPopup = $ionicPopup.confirm({
-        title: item.name,
-        template: item.sizes.toString()
-    });
-    confirmPopup.then(function(res) {
-        if (res) {
-            $rootScope.design[2].details.Color = item.name;
-            
-            console.log('You are sure');
-        } else {
-            console.log('You are not sure');
-        }
-    })}
-
-// An alert dialog
-$scope.showAlert = function() {
-    var alertPopup = $ionicPopup.alert({
-        title: 'Don\'t eat that!',
-        template: 'It might taste good'
-    });
-    alertPopup.then(function(res) {
-        console.log('Thank you for not eating my delicious ice cream cone');
-    });
-}
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope      
-    });
-    // .fromTemplateUrl() method
-    $ionicPopover.fromTemplateUrl('my-popover.html', {
-        scope: $scope
-    }).then(function (popover) {
-        $scope.popover = popover;    }); 
-    $scope.openPopover = function ($event, button) {
-        $scope.button = button;
-        $scope.popover.show($event);
-        $scope.popover.updateColor = function (color, isChecked) {
-            $rootScope.design[2].details.Sizes = color;
-        }
-    };
-    $scope.closePopover = function () {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function () {
-        $scope.popover.remove();
-    });
-    // Execute action on hide popover
-    $scope.$on('popover.hidden', function () {
-        // Execute action
-    });
-    // Execute action on remove popover
-    $scope.$on('popover.removed', function () {
-        // Execute action
-    });
-    $scope.styleId = $stateParams.styleId;
-    if ($rootScope.products.length === null) alert("Oops! Please reload");
-    for (i = 0; i < $rootScope.products.length; i++) {
-        if ($rootScope.products[i].style == $scope.styleId) {
-            $rootScope.shirt = $rootScope.products[i];
-        }
-    }
-    var aShirt = $rootScope.shirt;
-    var garmentUrl = aShirt.url;
-    $http.get(garmentUrl, {
-        params: {
-            "key1": "value1",
-            "key2": "value2"
-        }
     })
-    .success(function (data) {
-        $scope.shirt = data;
-    })
-        
-    .error(function (data) {
-        alert("ERROR");
-    });
-
-    $scope.nextSlide = function () {
-        $ionicSlideBoxDelegate.next();
-    }
-
-    $scope.updateShirtDetails = function(size, garment, brand,style){
-        //alert(size + garment);
-        $rootScope.design[2].details.Size = size;
-        //$scope.shirt.colors[0].sizes
-        $rootScope.design[2].value = garment;
-        $rootScope.design[2].details.Name = garment;
-        $rootScope.design[2].details.Brand = brand;
-        $rootScope.design[2].details.Style = style;
-    };
-})
 
 .controller('detailsCtrl', function ($scope, $rootScope, $stateParams) {
     var myId = 0;
@@ -300,61 +201,37 @@ $scope.showAlert = function() {
 })
 
 .controller('GarmentsCtrl', function ($rootScope, $scope, $http, ProductService, $stateParams) {
-    $scope.catagories = [
-        { title: 'Hoodies', id: 'Hoodies' },
-        { title: 'Unisex', id: 'Unisex' },
-        { title: 'Youth', id: 'Youth' },
-        { title: 'Female', id: 'Female' },
-        { title: 'Men', id: 'Men' },
-        { title: 'All', id: '' }
-    ];
 
-    $stateParams.filterId = 'Hoodies';
-    $scope.filterFunction = function (element) {
-        return element.name.match('/^Bella/') ? true : false;
-    };
     ProductService.get(function (data) {
         $rootScope.products = data.products;
     })
 
-    $http.get("https://api.scalablepress.com/v2/categories", {
-        params: {
-            "key1": "value1",
-            "key2": "value2"
-        }
-    })
-    .success(function (data) {
-        $scope.catList = data;
-    })
-    .error(function (data) {
-        alert("ERROR");
-    });
+    //$http.get("https://api.scalablepress.com/v2/categories", {
+    //    params: {
+    //        "key1": "value1",
+    //        "key2": "value2"
+    //    }
+    //})
+    //.success(function (data) {
+    //    $scope.catList = data;
+    //})
+    //.error(function (data) {
+    //    alert("ERROR");
+    //});
 
-    $http.get("https://api.scalablepress.com/v2/products/hanes-50-50-hoodie", {
-        params: {
-            "key1": "value1",
-            "key2": "value2"
-        }
-    })
-    .success(function (data) {
-        $scope.garmentsList = data;
-    })
-    .error(function (data) {
-        alert("ERROR2");
-    });
+    //$http.get("https://api.scalablepress.com/v2/products/hanes-50-50-hoodie", {
+    //    params: {
+    //        "key1": "value1",
+    //        "key2": "value2"
+    //    }
+    //})
+    //.success(function (data) {
+    //    $scope.garmentsList = data;
+    //})
+    //.error(function (data) {
+    //    alert("ERROR2");
+    //});
 })
-
-.controller('PlaylistsCtrl', function ($scope) {
-    $scope.playlists = [
-    { title: 'Hoodies', id: 'Hoodies' },
-    { title: 'Unisex', id: 'Unisex' },
-    { title: 'Youth', id: 'Youth' },
-    { title: 'Female', id: 'Female' },
-    { title: 'Men', id: 'Men' },
-    { title: 'All', id: '' }
-    ];
-})
-
 .controller('QuoteCtrl', function ($scope, QuoteService, $rootScope) {
 
     QuoteService.get(function (data) {
@@ -363,12 +240,166 @@ $scope.showAlert = function() {
 
     $scope.pickMessage = function (text) {
         $rootScope.design[0].value = text;
+        $rootScope.design[3].details.Name = text;
     };
-}
-)
+})
 .controller('ErrorCtrl', function ($rootScope) {
 
 })
+.controller('PhotoCtrl', function ($scope) {
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
 
-.controller('PlaylistCtrl', function ($scope, $stateParams) {
-});
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        alert("Ready1" + navigator.camera + pictureSource);
+        pictureSource = navigator.camera.PictureSourceType;
+        destinationType = navigator.camera.DestinationType;
+        alert("Ready2" + destinationType);
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    $scope.onPhotoDataSuccess = function(imageData) {
+        // Uncomment to view the base64-encoded image data
+        // console.log(imageData);
+
+        // Get image handle
+        //
+        var smallImage = document.getElementById('smallImage');
+
+        // Unhide image elements
+        //
+        smallImage.style.display = 'block';
+
+        // Show the captured photo
+        // The in-line CSS rules are used to resize the image
+        //
+        smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+        $scope.onPhotoURISuccess = function(imageURI) {
+        // Uncomment to view the image file URI
+        // console.log(imageURI);
+
+        // Get image handle
+        //
+        var largeImage = document.getElementById('largeImage');
+
+        // Unhide image elements
+        //
+        largeImage.style.display = 'block';
+
+        // Show the captured photo
+        // The in-line CSS rules are used to resize the image
+        //
+        largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+        $scope.capturePhoto = function () {
+            // Take picture using device camera and retrieve image as base64-encoded string
+            alert("capture" + navigator.camera);
+            navigator.camera.cleanup();
+            alert("hi");
+            navigator.camera.getPicture(function (imageData) {
+                alert("camera start");
+            }, onFail, {
+                quality: 100, allowEdit: true,
+                targetWidth: 2350,
+                targetHeight: 1800,
+                destinationType: Camera.DestinationType.FILE_URI,
+                saveToPhotoAlbum: true
+            });//navigator.camera.getPicture(function (imageURI) {
+
+            //    // imageURI is the URL of the image that we can use for
+            //    // an <img> element or backgroundImage.
+
+            //}, function (err) {
+
+            //    // Ruh-roh, something bad happened
+
+            //}, cameraOptions);
+        //navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+        //    quality: 50,
+        //    destinationType: destinationType.DATA_URL
+        //});
+    }
+
+    // A button will call this function
+    //
+    $scope.capturePhotoEdit = function () {
+        // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+        navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+            quality: 20, allowEdit: true,
+            destinationType: destinationType.DATA_URL
+        });
+    }
+
+    // A button will call this function
+    //
+     $scope.getPhoto = function(source) {
+        // Retrieve image file location from specified source
+        navigator.camera.getPicture(onPhotoURISuccess, onFail, {
+            quality: 50,
+            destinationType: destinationType.FILE_URI,
+            sourceType: source
+        });
+    }
+
+    // Called if something bad happens.
+    //
+     $scope.onFail = function(message) {
+        alert('Failed because: ' + message);
+    }
+
+})
+.controller('FlickrCtrl', function ($scope, Flickr, $ionicPopup, $rootScope) {
+
+    var doSearch = ionic.debounce(function (query) {
+        Flickr.search(query).then(function (resp) {
+            $scope.photos = resp;
+        });
+    }, 500);
+
+    $scope.search = function () {
+        doSearch($scope.query);
+    }
+    var template = '<ion-popover-view><ion-header-bar> <h1 class="title">Hello</h1> </ion-header-bar> <ion-content></ion-content></ion-popover-view>';
+    $scope.showConfirm = function (item) {
+        $scope.data = {};
+        $ionicPopup.show({
+            template: '<div class="list"><label class="item item-input item-select"><span class="input-label">Size</span><select name="pick" id="pick" ng-model="data.pick"><option value="" width="20">Please select</option><option value="image">Image</option><option value="avitar">Avitar</option></select></label></div>',
+            title: item.title,
+            subTitle: item.date_taken +', '+ item.author,
+            scope: $scope,
+            buttons: [
+              { text: 'Cancel' },
+              {
+                  text: '<b>Save</b>',
+                  type: 'button-positive',
+                  onTap: function (e) {
+                      if (!$scope.data.pick) {
+                          //don't allow the user to close unless he enters wifi password
+                          e.preventDefault();
+                      } else {
+                          $rootScope.design[1].details[0].url = item.media.m;
+                          return $scope.data.pick;
+                      }
+                  }
+              }
+            ]
+        });
+    }
+
+})
+
+

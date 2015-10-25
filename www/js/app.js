@@ -49,39 +49,20 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 'menuContent': {
                     controller: 'DesignCtrl',
                     templateUrl: 'templates/design.html',
-                    resolve: {
-                        design: function (DesignService) {
-                            return DesignService.getDesign()
-                        }
-                    }
+                    //resolve: {
+                    //    design: function (DesignService) {
+                    //        return DesignService.get()
+                    //    }
+                    //}
                 }
             }
         })
-        .state('app.todos', {
-            url: '/todos',
+        .state('app.mapsearch', {
+            url: '/mapsearch',
             views: {
                 'menuContent': {
-                    controller: 'TodosCtrl',
-                    templateUrl: 'templates/todos.html',
-                    resolve: {
-                        todos: function (TodosService) {
-                            return TodosService.getTodos()
-                        }
-                    }
-                }
-            }
-        })
-        .state('app.todo', {
-            url: '/todo/:todoId',
-            views: {
-                'menuContent': {
-                    controller: 'TodoCtrl',
-                    templateUrl: 'templates/todo.html',
-                    resolve: {
-                        todo: function ($stateParams, TodosService) {
-                            return TodosService.getTodo($stateParams.todoId)
-                        }
-                    }
+                    controller: 'MapCtrl',
+                    templateUrl: 'templates/detailedSearch.html'
                 }
             }
         })
@@ -91,11 +72,11 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 'menuContent': {
                     templateUrl: "templates/garments.html",
                     controller: 'GarmentsCtrl',
-                    resolve: {
-                        garments: function (ShirtService) {
-                            return ShirtService.getShirts()
-                        }
-                    }
+                    //resolve: {
+                    //    garments: function (ShirtService) {
+                    //        return ShirtService.getShirts()
+                    //    }
+                    //}
                 }
             }
         })
@@ -108,24 +89,16 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 }
             }
         })
-        .state('app.search', {
-            url: '/search',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/search.html'
-                }
-            }
-        })
         .state('app.browse', {
             url: '/browse',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/browse.html',
-                    controller: 'BestsellerCtrl'
+                    controller: 'FlickrCtrl'
                 }
             }
         })
-                .state('app.contact', {
+        .state('app.contact', {
                     url: '/contact',
                     views: {
                         'menuContent': {
@@ -152,33 +125,15 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 }
             }
         })
-        .state('app.single', {
-            url: '/playlists/:playlistId',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/playlist.html',
-                    controller: 'PlaylistCtrl'
-                }
-            }
-        })
-        .state('app.master', {
-            url: "/master",
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/master.html',
-                    controller: 'masterCtrl'
-                }
-            }
-        })
-        .state('app.details', {
-            url: "/details/:id",
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/details.html',
-                    controller: 'detailsCtrl'
-                }
-            }
-        })
+        .state('app.photos', {
+                    url: '/photos',
+                    views: {
+                        'menuContent': {
+                            templateUrl: 'templates/photoPage.html',
+                            controller: 'PhotoCtrl'
+                        }
+                    }
+                })
         .state('app.shirtCard', {
             url: "/shirtCard/:styleId",
             views: {
@@ -188,22 +143,21 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 }
             }
         })
-        .state('app.contacts', {
-            url: "/contacts",
+        //.state('app.contacts', {
+        //    url: "/contacts",
+        //    views: {
+        //        'menuContent': {
+        //            templateUrl: 'templates/contacts.html',
+        //            controller: 'ContactsCtrl'
+        //        }
+        //    }
+        //})
+        .state('app.layout', {
+            url: "/layout",
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/contacts.html',
-                    controller: 'ContactsCtrl'
-                }
-            }
-        })
-        .state('app.color', {
-            url: "/color/:styleId",
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/colorSlide.html',
-                    controller: 'shirtCardCtrl'
-
+                    templateUrl: 'templates/layout.html',
+                    controller: 'LayoutCtrl'
                 }
             }
         })
@@ -216,6 +170,7 @@ angular.module('starter', ['ionic', 'ionic.service.core', 'ionic.service.analyti
                 }
             }
         })
+ 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/design');
 });

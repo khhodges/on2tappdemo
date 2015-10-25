@@ -1,24 +1,24 @@
-﻿<!--<script id="my-popover" type="text/ng-template">
-    <ion-popover-view>
-        <ion-content scrollbar-y="true">
-            &nbsp;<table border="1" cellpadding="2" cellspacing="2" ng-repeat="item in shirt.colors">
-                <tr><td height="30"></td><td class="checkbox" width="25" height="25" bgcolor="#{{item.hex}}"></td><td width="10"></td><td><input type="checkbox" onchange="$scope.popover.updateColor(this.value, this.checked)" width="25" height="25"> {{item.name}}</td></tr>
-            </table>
-        </ion-content>
-    </ion-popover-view>
-</script>-->
-<ion-view view-title="{{shirt.name}} {{shirt.style}}" ng-model="design[2].value">
+﻿<ion-view view-title="{{shirt.name}} {{shirt.style}}" ng-init="design[2].details.Style = shirt.style; design[2].details.Size='Pick Size';design[2].details.Color='Pick Color'" >
     <ion-content>
-        <div class="card has-header" ng-controller='shirtCardCtrl'>
+        <div class="card has-header" >
             <div>
                 <center>
-                    <div class="row">
-                        <div class="col">
-                            <div height="30" class="checkbox" width="30" ng-repeat="item in shirt.colors"  ng-click="showConfirm(item)" bgcolor="#{{item.hex}}">{{item.name}} <br/>
-                                <img ng-src="{{item.images[1].url}}" height="50" />
-                            </div>
-                        </div>
+                    <div class="row " >
+                        <div class="col"  ng-if="$index<5" ng-repeat="item in shirt.colors">{{(item.name).substring(0,3)+'.'}}<br /><img ng-src="{{item.images[1].url}}" height="50" ng-click="showConfirm(item)" /></div>
                     </div>
+                    <div class="row ">
+                        <div class="col"  ng-if="$index>4 && $index<10" ng-repeat="item in shirt.colors">{{(item.name).substring(0,3)+'.'}}<br /><img ng-src="{{item.images[1].url}}" height="50" ng-click="showConfirm(item)"/></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col" ng-if="$index>9 && $index<15" ng-repeat="item in shirt.colors">{{(item.name).substring(0,3)+'.'}}<br /><img ng-src="{{item.images[1].url}}" height="50" ng-click="showConfirm(item)" /></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col" ng-if="$index>14 && $index<20" ng-repeat="item in shirt.colors">{{(item.name).substring(0,3)+'.'}}<br /><img ng-src="{{item.images[1].url}}" height="50" ng-click="showConfirm(item)" /></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col"  ng-if="$index>19" ng-repeat="item in shirt.colors">{{(item.name).substring(0,3)+'.'}}<br /><img ng-src="{{item.images[1].url}}" height="50" ng-click="showConfirm(item)"/></div>
+                    </div>
+                        <h2>{{design[2].details.Style}}-{{design[2].details.Color}}-{{design[2].details.Size}}</h2>
                 </center>
             </div>
 
@@ -27,13 +27,11 @@
                 <div class="item item-divider">
                     {{shirt.comments}} {{shirt.properties.material}} <br /> Pick a color to see and select size availability:
                 </div>
-                {{design[2].details.Color}} - {{design[2].details.Size}}
+                
             </div>
-            <ion-radio ng-click="updateShirtDetails(item, shirt.name, shirt.brand, shirt.style)" ng-repeat="item in shirt.colors[0].sizes" value="{{item
-}}">{{item}}</ion-radio>
         </div>
-        <a menu-close href="#/app/design" class="item item-icon-left">
-            <i class="icon ion-android-attach"></i> Use this Address and Return
+        <a menu-close href="#/app/design" class="item item-icon-left" ng-click="design[2].value= design[2].details.Style+'-'+design[2].details.Color+'-'+design[2].details.Size">
+            <i class="icon ion-android-attach"></i> Select {{design[2].value}} and Return
         </a>
         <br/><br />
     </ion-content>
